@@ -1,10 +1,10 @@
 fr:
   simple_form:
-    "yes": 'Oui'
-    "no": 'Non'
+    "yes": "Oui"
+    "no": "Non"
     required:
-      text: 'obligatoire'
-      mark: '*'
+      text: "obligatoire"
+      mark: "*"
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
@@ -13,13 +13,13 @@ fr:
     # Labels and hints examples
     labels:
        defaults:
-         password: 'Mot de passe'
+         password: "Mot de passe"
        user:
          new:
-           email: 'Adresse e-mail de connexion.'
+           email: "Adresse e-mail de connexion."
          edit:
-           email: 'Adresse e-mail.'
+           email: "Adresse e-mail."
     hints:
        defaults:
-         username: 'Nom d'utilisateur de connexion.'
-         password: 'Veuillez ne pas utiliser de caractères spéciaux.'
+         username: "Nom d'utilisateur de connexion."
+         password: "Veuillez ne pas utiliser de caractères spéciaux."

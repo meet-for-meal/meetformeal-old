@@ -14,21 +14,21 @@ gem 'devise'
 gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
-gem 'therubyracer', :platform=>:ruby
+gem 'therubyracer', platform: :ruby
 gem 'unicorn'
 gem 'unicorn-rails'
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
 end
 group :development, :test do
   gem 'factory_girl_rails'
