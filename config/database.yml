@@ -11,10 +11,10 @@ test:
   timout: 5000
 
 production:
-  adapter:  <%= ENV['DB_ADAPTER_PROD'] %>
-  encoding: <%= ENV['DB_ENCODING_PROD'] %>
-  database: <%= ENV['DB_DATABASE_PROD'] %>
-  port:     <%= ENV['DB_PORT_PROD'] %>
-  hots:     <%= ENV['DB_HOST_PROD'] %>
-  username: <%= ENV['DB_USERNAME_PROD'] %>
-  password: <%= ENV['DB_PASSWORD_PROD'] %>
+  adapter:  ENV['DB_ADAPTER_PROD']
+  encoding: ENV['DB_ENCODING_PROD']
+  database: ENV['DB_DATABASE_PROD']
+  port:     ENV['DB_PORT_PROD']
+  hots:     ENV['DB_HOST_PROD']
+  username: ENV['DB_USERNAME_PROD']
+  password: ENV['DB_PASSWORD_PROD']
