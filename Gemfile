@@ -20,6 +20,7 @@ gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development do
