@@ -235,6 +235,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sprockets_better_errors (0.0.4)
+      sprockets-rails (>= 1.0.0)
     sqlite3 (1.3.9)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
@@ -298,6 +300,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.0)
   simple_form
+  sprockets_better_errors
   sqlite3
   therubyracer
   turbolinks
