@@ -9,6 +9,9 @@ Bundler.require(:default, Rails.env)
 module Meetformeal
   class Application < Rails::Application
 
+    config.assets.initialize_on_precompile = false
+    config.serve_static_assets = true
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
 
@@ -19,8 +22,6 @@ module Meetformeal
       g.view_specs false
       g.helper_specs false
     end
-
-    config.serve_static_assets = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
