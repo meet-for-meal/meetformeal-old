@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Meetformeal" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Meetformeal" %>">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <title><%= content_for?(:title) ? yield(:title) : 'Meetformeal' %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Meetformeal' %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= yield(:header) %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -16,5 +16,7 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
+    <%= yield(:footer) %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>

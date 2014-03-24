@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+var map = L.map('venues-map').setView([55.84372, -4.283135], 13)
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map)
+
+L.marker([55.84372, -4.283135]).addTo(map)
+  .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+  .openPopup()
