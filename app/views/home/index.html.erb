@@ -1,11 +1,6 @@
-<% content_for :header do -%>
-  <%= stylesheet_link_tag 'http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css' %>
-<% end -%>
-
 <h3>Home</h3>
 
-<div id="venues-map"></div>
+<div id="map-canvas"></div>
 
-<% content_for :footer do -%>
-  <%= javascript_include_tag 'http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js' %>
-<% end -%>
+<script type="text/params" id="js-home" data-params='<%= { foursquare: { oauth_token: ENV['FOURSQUARE_TOKEN'] } }.to_json.html_safe %>'></script>
+<% javascript 'home' %>

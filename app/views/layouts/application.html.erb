@@ -5,7 +5,6 @@
     <title><%= content_for?(:title) ? yield(:title) : 'Meetformeal' %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Meetformeal' %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= yield(:header) %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -16,7 +15,8 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
-    <%= yield(:footer) %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= yield(:head) %>
   </body>
 </html>
