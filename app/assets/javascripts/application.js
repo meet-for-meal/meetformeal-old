@@ -18,7 +18,7 @@
 
 ;(function(win, doc) {
 
-  var pageParams = $('#js-home').data('params')
+  var globalParams = $('#js-global').data('params')
 
   var MFM = window.MFM = {
     version: 0.1
@@ -27,7 +27,7 @@
   MFM.FoursquareApi = (function() {
     var f = {}
       , foursquareApiUrl = 'https://api.foursquare.com/v2'
-      , accessToken = pageParams.foursquare.oauth_token
+      , accessToken = globalParams.foursquare.oauth_token
 
     var defaultParams = { v: 20140401, oauth_token: accessToken }
 

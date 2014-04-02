@@ -8,6 +8,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+
     <header>
       <%= render 'layouts/navigation' %>
     </header>
@@ -15,7 +16,10 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
+
+    <script type="text/params" id="js-global" data-params='<%= { foursquare: { oauth_token: ENV['FOURSQUARE_TOKEN'] } }.to_json.html_safe %>'></script>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>
     <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
+
   </body>
 </html>
