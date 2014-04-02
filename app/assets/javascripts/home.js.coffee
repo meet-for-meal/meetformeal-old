@@ -1,29 +1,10 @@
 class User
   constructor: (@name, @lat, @lng) ->
 
-pageParams = $('#js-home').data('params')
 
-FoursquareApi = do ->
-  f = {}
-  foursquareApiUrl = 'https://api.foursquare.com/v2'
-  accessToken = pageParams.foursquare.oauth_token
-  defaultParams = v: 20140401, oauth_token: accessToken
-  f.req = (endpoint, params, success, error) ->
-    urlParams = $.param $.extend(defaultParams, params)
-    req = $.ajax
-      url: "#{foursquareApiUrl}#{endpoint}?#{urlParams}"
-    req.done success
-    req.fail(error || ->)
-    req
-  f
-
-
-MFM = window.MFM = window.MFM || {}
+MFM = window.MFM || {}
 currentUser = MFM.currentUser = new User 'rhannequin', 1.289272, 103.863146
 userPosition = "#{currentUser.lat},#{currentUser.lng}"
-
-FoursquareApi.req '/venues/search', { ll: "#{currentUser.lat},#{currentUser.lng}" }, (data) ->
-  console.log data.response.venues
 
 
 $(document).ready ->
@@ -32,7 +13,7 @@ $(document).ready ->
     currentUser = MFM.currentUser
     myLatlng = lat: 1.289272, lng: 103.863146
     singaporeFlyer = new google.maps.LatLng currentUser.lat, currentUser.lng
-    mapOptions = center: singaporeFlyer, zoom: 15
+    mapOptions = center: singaporeFlyer, zoom: 13
     MFM.map = new google.maps.Map document.getElementById('map-canvas'), mapOptions
 
   initMarkers = (users) ->
@@ -41,15 +22,28 @@ $(document).ready ->
     currentUser = MFM.currentUser
 
     addMarker map, currentUser.lat, currentUser.lng
-    addMarker map, 1.2855, 103.8630
-    addMarker map, 1.281, 103.8620
-    addMarker map, 1.2890, 103.84
-    addMarker map, 1.29, 103.86
 
-  addMarker = (map, lat, lng, title) ->
+    venuesParams =
+      categoryId: '4d4b7105d754a06374d81259'
+      ll: "#{currentUser.lat},#{currentUser.lng}"
+    MFM.FoursquareApi.req '/venues/search', venuesParams, (data) ->
+      data.response.venues.forEach (venue) ->
+        location = venue.location
+        markerOpt =
+          icon: customMarker('335BB7')
+          title: venue.name
+        addMarker map, location.lat, location.lng, markerOpt
+
+  addMarker = (map, lat, lng, opt = {}) ->
     options = position: new google.maps.LatLng(lat, lng) , map: map
-    options.title = title if title?
+    options = $.extend options, opt
     new google.maps.Marker options
+
+  customMarker = (pinColor) ->
+    pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|#{pinColor}",
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34))
 
   initMap()
   initMarkers()

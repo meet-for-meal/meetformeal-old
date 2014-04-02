@@ -15,6 +15,30 @@
 //= require turbolinks
 //= require bootstrap
 
-window.MFM = {
-  version: 0.1
-}
+;(function(win, doc) {
+
+  var pageParams = $('#js-home').data('params')
+
+  var MFM = window.MFM = {
+    version: 0.1
+  }
+
+  MFM.FoursquareApi = (function() {
+    var f = {}
+      , foursquareApiUrl = 'https://api.foursquare.com/v2'
+      , accessToken = pageParams.foursquare.oauth_token
+
+    var defaultParams = { v: 20140401, oauth_token: accessToken }
+
+    f.req = function (endpoint, params, success, error) {
+      var urlParams = $.param($.extend(defaultParams, params))
+        , req = $.ajax({ url: foursquareApiUrl + endpoint + '?' + urlParams })
+      req.done(success)
+      req.fail(error || function(){})
+      return req
+    }
+
+    return f
+  }).call(this)
+
+})(window, window.document)
