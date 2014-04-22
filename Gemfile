@@ -17,7 +17,7 @@ gem 'therubyracer', platform: :ruby
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
-gem 'amistad'
+gem 'amistad', git: 'https://github.com/blotto/amistad.git'
 
 group :production do
   gem 'pg'
