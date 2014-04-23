@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include Amistad::FriendModel
+  # include Amistad::FriendModel
 
   rolify
   # Include default devise modules. Others available are:
