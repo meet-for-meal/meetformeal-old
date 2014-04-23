@@ -4,22 +4,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : 'Meetformeal' %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Meetformeal' %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag 'application', params[:controller], media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
+    <% action_complete_name = "#{controller_name}-#{action_name}" %>
+    <% is_landing_page = action_complete_name == 'home-index' %>
   </head>
-  <body>
+  <body class="<%= "#{controller_name}-#{action_name}" %>">
 
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <% if is_landing_page %>
 
-    <script type="text/params" id="js-global" data-params='<%= @page_params.to_json.html_safe %>'></script>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>
-    <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
+      <%= yield %>
+
+    <% else %>
+
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+      <main role="main">
+         <%= render 'layouts/messages' %>
+         <%= yield %>
+      </main>
+
+      <script type="text/params" id="js-global" data-params='<%= @page_params.to_json.html_safe %>'></script>
+      <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>
+      <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
+
+    <% end %>
 
   </body>
 </html>
