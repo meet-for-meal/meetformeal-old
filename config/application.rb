@@ -9,8 +9,8 @@ Bundler.require(:default, Rails.env)
 module Meetformeal
   class Application < Rails::Application
 
-    config.assets.initialize_on_precompile = false
-    config.serve_static_assets = true
+    # config.assets.initialize_on_precompile = false
+    # config.serve_static_assets = true
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|

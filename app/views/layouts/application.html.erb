@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : 'Meetformeal' %></title>
+    <title>Meetformeal<%= ' - ' << yield(:title) if content_for?(:title) %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Meetformeal' %>">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -10,7 +10,11 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <%= stylesheet_link_tag 'application', params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <% unless Rails.application.assets.find_asset("#{controller_name}.css").nil? %>
+      <%= stylesheet_link_tag controller_name, media: 'all', 'data-turbolinks-track' => true  %>
+    <% end %>
+
     <%= csrf_meta_tags %>
 
     <% action_complete_name = "#{controller_name}-#{action_name}" %>
@@ -34,7 +38,10 @@
 
       <script type="text/params" id="js-global" data-params='<%= @page_params.to_json.html_safe %>'></script>
       <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>
-      <%= javascript_include_tag 'application', params[:controller], 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <% unless Rails.application.assets.find_asset("#{controller_name}.js").nil? %>
+        <%= javascript_include_tag controller_name, 'data-turbolinks-track' => true %>
+      <% end %>
 
     <% end %>
 

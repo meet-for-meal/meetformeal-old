@@ -83,3 +83,6 @@ pickle-email-*.html
 
 # Ignore application configuration
 /config/application.yml
+
+# Compiled assets
+/public/assets/
