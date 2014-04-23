@@ -1,11 +1,11 @@
-ADMIN_EMAIL:          john@doe.com
-ADMIN_NAME:           John Doe
-ADMIN_PASSWORD:       password
-COOKIE_STORE_KEY:     _meetformeal_incredible_session
-DEVISE_SECRET:        abc123_devise
-GMAIL_PASSWORD:       password
-GMAIL_USERNAME:       your.email
-ROLES:                admin user # Don't change this line
-SECRET_KEY_BASE:      abc123_prod
-SECRET_KEY_BASE_DEV:  abc123_dev
-SECRET_KEY_BASE_TEST: abc123_test
+ADMIN_EMAIL:      john@doe.com
+ADMIN_FIRSTNAME:  John
+ADMIN_LASTNAME:   Doe
+ADMIN_PASSWORD:   password
+COOKIE_STORE_KEY: _meetformeal_incredible_session
+DEVISE_SECRET:    abc123
+GMAIL_PASSWORD:   password
+GMAIL_USERNAME:   your.email
+ROLES:            admin user # Don't change this line
+SECRET_KEY_BASE:  abc123
+
