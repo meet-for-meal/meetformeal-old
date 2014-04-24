@@ -1,5 +1,3 @@
-<% content_for :title, 'Eat Better. Eat Together.' %>
-
 <div id="large_bg_img" class="clearfix">
   <div id="large_bg_img_overlay"></div>
   <%= image_tag('bg2.jpg', :class => 'big') %>
@@ -12,9 +10,7 @@
 <section id="container">
 
   <div class="wrapper">
-
     <div id="intro">
-
       <h1>Meet for Meal</h1>
 
       <%= link_to(root_path) do %>
@@ -24,20 +20,45 @@
       <h2>
         Eat better. Eat together.
       </h2>
-
     </div>
 
     <div id="welcome">
       <p>
-          <strong>Meet for Meal</strong> ouvrira très bientôt ses portes.<br>
-          Rendez-vous sur notre page <a href="https://www.facebook.com/meetformeal" target="_blank">Facebook</a> pour plus d'informations.
+        <strong>Meet for Meal</strong> ouvrira très bientôt ses portes.<br>
+        Rendez-vous sur notre page <a href="https://www.facebook.com/meetformeal" target="_blank">Facebook</a> pour plus d'information.
       </p>
 
-      <div id="fb-iframe">
-          <iframe src="https://www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fmeetformeal&amp;width&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=355885751119934" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:480px; height:290px; background:#FFF;" allowTransparency="true"></iframe>
+      <p>
+        <strong>Meet for Meal</strong> est un réseau social utilisant la <strong>géolocalisation</strong> pour trouver et rencontrer des <strong>partenaires culinaires</strong> par affinités proches de vous.
+      </p>
+
+      <div id="social-buttons">
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fmeetformeal&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=21&amp;appId=355885751119934" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width:160px; float:left;" allowTransparency="true"></iframe>
+
+        <a href="https://twitter.com/meetformeal" class="twitter-follow-button" data-show-count="false">Follow @meetformeal</a>
       </div>
     </div>
 
   </div>
 
 </section>
+
+<footer>
+
+</footer>
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/fr_FR/all.js#xfbml=1&appId=553352714678387";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

@@ -1,14 +1,5 @@
 .home-main {
 
-  // html, body, #map-canvas {
-  //   margin: 0px;
-  //   padding: 0px;
-  // }
-
-  // html, body {
-  //   height: 100%;
-  // }
-
   #map-canvas {
     margin: 0px;
     padding: 0px;
@@ -24,7 +15,7 @@
   font-family: "Helvetica Neue", Helvetica, Arial,sans-serif;
   line-height: 1;
 
-  div, span, applet, object, iframe,
+  &, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
   del, dfn, em, font, img, ins, kbd, q, s, samp,
@@ -127,15 +118,20 @@
   }
 
   #container .wrapper {
-    width: 960px;
+    width: 100%;
     margin:0 auto;
     text-align:center;
+    padding:0 20px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -o-box-sizing:border-box;
   }
 
   #intro {
-    width:480px;
+    width: 100%;
     text-align:center;
-    margin:100px auto 0 auto;
+    margin: 40px auto 0 auto;
     padding:0px;
   }
 
@@ -144,28 +140,33 @@
     height: 0px;
   }
 
+  #intro img {
+    width:100px;
+    height:100px;
+  }
+
   #intro img:hover {
     opacity:0.7;
   }
 
   #intro h2 {
-    margin-top:20px;
+    margin-top:10px;
     text-transform:uppercase;
     color:#d5a035;
-    font-size:18px;
+    font-size:13px;
     font-weight:300;
     text-shadow: 0 1px 2px rgba(0,0,0, 0.8);
   }
 
   #login {
     float:left;
-    width:400px;
+    width:100%;
     margin:20px 0px;
   }
 
   #welcome {
-    width:480px;
-    margin:50px auto 100px auto;
+    width: 480px;
+    margin:50px auto;
     text-align:center;
   }
 
@@ -174,11 +175,14 @@
     font-size:14px;
     line-height:18px;
     text-shadow: #000 0 1px 2px;
-    margin-bottom:10px;
+    margin-bottom:30px;
   }
 
-  #welcome #fb-iframe {
-    margin-top:50px;
+  #welcome #social-buttons {
+    padding-top:30px;
+    clear:both;
+    width: 320px;
+    margin: 0 auto;
   }
 
   #welcome h2 {
@@ -242,6 +246,12 @@
 
   #extra-form a:hover {
     color:#CCC;
+  }
+
+  @media (max-width: 720px) {
+    #welcome {
+      width: 100%;
+    }
   }
 
 }
