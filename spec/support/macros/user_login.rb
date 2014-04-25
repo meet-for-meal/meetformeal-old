@@ -1,7 +1,7 @@
 module Macros
   module UserLogin
     def login_with(user, options = {})
-      visit '/home'
+      visit homepage_url
       click_link 'Login'
 
       within 'form' do
@@ -13,7 +13,7 @@ module Macros
     end
 
     def logout
-      visit '/home'
+      visit homepage_url
       click_link('Logout')
     end
   end

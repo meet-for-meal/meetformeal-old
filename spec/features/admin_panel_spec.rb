@@ -10,9 +10,9 @@ feature 'Admin panel' do
     end
 
     scenario 'should be able to access the admin panel' do
-      visit '/admin'
+      visit rails_admin_path
 
-      current_path.should == '/admin'
+      current_path.should == rails_admin_path
       page.should have_content('Administration')
     end
   end
@@ -22,11 +22,12 @@ feature 'Admin panel' do
 
     background do
       login_with(user)
-      visit '/admin'
+      visit rails_admin_path
     end
 
     scenario 'should not be able to access the admin panel' do
-      current_path.should == '/home'
+      current_path.should == homepage_path
+      page.should display_flash_message('You are not authorized to access this page.')
     end
   end
 
