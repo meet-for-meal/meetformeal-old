@@ -27,7 +27,7 @@ feature 'User profile' do
     scenario 'an user should be able to login with new password' do
       logout
       login_with(user, password: 'new password')
-      page.should display_flash_message('Connecté.')
+      page.should display_flash_message('Connecté(e).')
     end
   end
 end
