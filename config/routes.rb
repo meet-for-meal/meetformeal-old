@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
-  get '/home', to: 'home#main'
+  get '/home', to: 'home#main', as: 'home_page'
   devise_for  :users,
               controllers:  { registrations: 'registrations' },
               path_names:   {
