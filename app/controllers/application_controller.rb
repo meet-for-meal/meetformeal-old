@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
       set_page_params foursquare: { oauth_token: ENV['FOURSQUARE_TOKEN'] }
     end
 
+    def after_sign_in_path_for(resource_or_scope)
+      homepage_path
+    end
+
+    def after_sign_out_path_for(resource_or_scope)
+      request.referrer
+    end
 end
