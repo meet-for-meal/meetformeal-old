@@ -70,7 +70,6 @@ describe User do
       FactoryGirl.build(:user, password: short, password_confirmation: short)
         .should_not be_valid
     end
-
   end
 
   describe 'password encryption' do
@@ -85,7 +84,33 @@ describe User do
     it 'should set the encrypted password attribute' do
       @user.encrypted_password.should_not be_blank
     end
+  end
 
+  describe 'fields' do
+    [
+      [:name, :string],
+      [:email, :string],
+      [:encrypted_password, :string],
+      [:reset_password_token, :string],
+      [:remember_created_at, :datetime],
+      [:sign_in_count, :integer],
+      [:last_sign_in_at, :datetime],
+      [:current_sign_in_ip, :string],
+      [:last_sign_in_ip, :string]
+    ].each do |column|
+      it do
+        name, type, options = *column
+
+        have_this_column = have_db_column(name)
+        have_this_column.of_type(type) if type.present?
+        have_this_column.with_options(options) if options.present? and options.is_a?(Hash)
+
+        should have_this_column
+      end
+    end
+
+    it { should have_db_column(:created_at).of_type(:datetime) }
+    it { should have_db_column(:updated_at).of_type(:datetime) }
   end
 
 end
