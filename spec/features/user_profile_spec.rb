@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'User profile' do
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { create(:user) }
 
   background do
     login_with(user)

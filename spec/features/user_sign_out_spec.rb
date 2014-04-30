@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Sign out' do
   background do
-    user = FactoryGirl.create(:user)
+    user = create(:user)
     login_with(user)
 
     visit homepage_path

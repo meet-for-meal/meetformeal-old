@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Sign in' do
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { create(:user) }
   background do
     visit homepage_path
     click_link 'Login'

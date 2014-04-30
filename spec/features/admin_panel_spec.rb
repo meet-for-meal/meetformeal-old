@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Admin panel' do
 
   describe 'an admin user' do
-    let!(:user) { FactoryGirl.create(:admin) }
+    let!(:user) { create(:admin) }
 
     background do
       login_with(user)
@@ -18,7 +18,7 @@ feature 'Admin panel' do
   end
 
   describe 'a regular user' do
-    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user) { create(:user) }
 
     background do
       login_with(user)
