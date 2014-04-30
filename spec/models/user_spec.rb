@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe User do
 
-  it 'should create a new instance given a valid attribute' do
+  it 'creates a new instance given a valid attribute' do
     FactoryGirl.create :user
   end
 
   describe 'email' do
-    it 'should be required' do
+    it 'is required' do
       no_email_user = FactoryGirl.build :user, email: ''
       expect(no_email_user).not_to be_valid
     end
 
-    it 'should be accepted when valid' do
+    it 'is accepted when valid' do
       addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
       addresses.each do |address|
         valid_email_user = FactoryGirl.build :user, email: address
@@ -20,7 +20,7 @@ describe User do
       end
     end
 
-    it 'should be rejected when not valid' do
+    it 'is rejected when not valid' do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
       addresses.each do |address|
         invalid_email_user = FactoryGirl.build :user, email: address
@@ -28,13 +28,13 @@ describe User do
       end
     end
 
-    it 'should be rejected when duplicated' do
+    it 'is rejected when duplicated' do
       first_user = FactoryGirl.create :user
       user_with_duplicate_email = FactoryGirl.build :user, email: first_user.email
       expect(user_with_duplicate_email).not_to be_valid
     end
 
-    it 'should be rejected when identical up to case' do
+    it 'is rejected when identical up to case' do
       user = FactoryGirl.create :user
       user_with_duplicate_email = FactoryGirl.build :user, email: user.email.upcase
       expect(user_with_duplicate_email).not_to be_valid
@@ -46,26 +46,26 @@ describe User do
       @user = FactoryGirl.build :user
     end
 
-    it 'should have a password attribute' do
+    it 'has a password attribute' do
       expect(@user).to respond_to(:password)
     end
 
-    it 'should have a password confirmation attribute' do
+    it 'has a password confirmation attribute' do
       expect(@user).to respond_to(:password_confirmation)
     end
   end
 
   describe 'password validations' do
-    it 'should require a password' do
+    it 'requires a password' do
       expect(FactoryGirl.build(:user, password: '', password_confirmation: ''))
         .not_to be_valid
     end
 
-    it 'should require a matching password confirmation' do
+    it 'requires a matching password confirmation' do
       expect(FactoryGirl.build(:user, password_confirmation: 'invalid')).not_to be_valid
     end
 
-    it 'should reject short passwords' do
+    it 'rejects short passwords' do
       short = 'a' * 5
       expect(FactoryGirl.build(:user, password: short, password_confirmation: short))
         .not_to be_valid
@@ -77,11 +77,11 @@ describe User do
       @user = FactoryGirl.create :user
     end
 
-    it 'should have an encrypted password attribute' do
+    it 'has an encrypted password attribute' do
       expect(@user).to respond_to(:encrypted_password)
     end
 
-    it 'should set the encrypted password attribute' do
+    it 'sets the encrypted password attribute' do
       expect(@user.encrypted_password).not_to be_blank
     end
   end
