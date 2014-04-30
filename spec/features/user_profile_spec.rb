@@ -21,13 +21,13 @@ feature 'User profile' do
     end
 
     scenario 'an user can see flash message' do
-      page.should display_flash_message('Votre compte a été modifié avec succès.')
+      expect(page).to display_flash_message('Votre compte a été modifié avec succès.')
     end
 
     scenario 'an user should be able to login with new password' do
       logout
       login_with(user, password: 'new password')
-      page.should display_flash_message('Connecté(e).')
+      expect(page).to display_flash_message('Connecté(e).')
     end
   end
 end

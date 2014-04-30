@@ -8,13 +8,13 @@ feature 'Sign in' do
   end
 
   scenario 'an user can see the sign in form' do
-    page.should have_content('Log in')
+    expect(page).to have_content('Log in')
 
     within 'form#new_user' do
-      page.should have_field('Email')
-      page.should have_field('Password')
-      page.should have_unchecked_field('Remember me')
-      page.should have_button('Log in')
+      expect(page).to have_field('Email')
+      expect(page).to have_field('Password')
+      expect(page).to have_unchecked_field('Remember me')
+      expect(page).to have_button('Log in')
     end
   end
 
@@ -29,10 +29,10 @@ feature 'Sign in' do
     end
 
     scenario 'he should be logged in' do
-      current_path.should == homepage_path
+      expect(current_path).to eq(homepage_path)
 
-      page.should display_flash_message('Connecté(e).')
-      page.should have_link('Logout')
+      expect(page).to display_flash_message('Connecté(e).')
+      expect(page).to have_link('Logout')
     end
   end
 end

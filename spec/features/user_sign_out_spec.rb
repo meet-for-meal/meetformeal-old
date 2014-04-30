@@ -10,7 +10,7 @@ feature 'Sign out' do
   end
 
   scenario 'successfully sign out' do
-    page.should display_flash_message('Déconnecté(e).')
-    current_path.should == homepage_path
+    expect(page).to display_flash_message('Déconnecté(e).')
+    expect(current_path).to eq(homepage_path)
   end
 end

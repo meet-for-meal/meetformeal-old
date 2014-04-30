@@ -18,10 +18,10 @@ feature 'Sign in' do
     end
 
     scenario 'he should be logged in' do
-      page.should display_flash_message('Bienvenue, vous êtes connecté(e)')
-      current_path.should == homepage_path
+      expect(page).to display_flash_message('Bienvenue, vous êtes connecté(e)')
+      expect(current_path).to eq(homepage_path)
 
-      User.find_by_email(user.email).should_not be_nil
+      expect(User.find_by_email(user.email)).not_to be_nil
     end
   end
 end

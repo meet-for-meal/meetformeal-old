@@ -1,12 +1,12 @@
 # Usage:
 #
 # describe 'A feature' do
-# specify { page.should have_flash_message('foo') }
+# specify { page.should display_flash_message('foo') }
 # end
 RSpec::Matchers.define :display_flash_message do |text|
   match do
     within 'div.alert' do
-      page.should have_content(text)
+      expect(page).to have_content(text)
     end
   end
 
