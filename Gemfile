@@ -24,7 +24,7 @@ gem 'newrelic_rpm'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'spring', group: :development
 
 group :production do
   gem 'pg'
@@ -35,13 +35,10 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
-  gem 'guard-bundler'
-  gem 'guard-rails'
   gem 'guard-rspec'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rb-fchange', require: false
-  gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
 end
 
@@ -53,7 +50,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'email_spec'
 end

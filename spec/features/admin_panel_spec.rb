@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Admin panel' do
 
   describe 'an admin user' do
-    let!(:user) { FactoryGirl.create(:admin) }
+    let!(:user) { create(:admin) }
 
     background do
       login_with(user)
@@ -12,13 +12,13 @@ feature 'Admin panel' do
     scenario 'should be able to access the admin panel' do
       visit rails_admin_path
 
-      current_path.should == rails_admin_path
-      page.should have_content('Administration')
+      expect(current_path).to eq(rails_admin_path)
+      expect(page).to have_content('Administration')
     end
   end
 
   describe 'a regular user' do
-    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user) { create(:user) }
 
     background do
       login_with(user)
@@ -26,8 +26,8 @@ feature 'Admin panel' do
     end
 
     scenario 'should not be able to access the admin panel' do
-      current_path.should == homepage_path
-      page.should display_flash_message('You are not authorized to access this page.')
+      expect(current_path).to eq(homepage_path)
+      expect(page).to display_flash_message('You are not authorized to access this page.')
     end
   end
 

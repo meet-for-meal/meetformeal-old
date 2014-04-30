@@ -3,9 +3,9 @@ require 'spec_helper'
 describe HomeController do
 
   describe "GET 'index'" do
-    it "should be successful" do
+    it "is successful" do
       get 'index'
-      response.should be_success
+      expect(response).to be_success
     end
   end
 

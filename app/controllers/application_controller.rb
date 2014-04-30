@@ -9,15 +9,15 @@ class ApplicationController < ActionController::Base
     redirect_to '/home', alert: exception.message
   end
 
-  def set_locale
-    I18n.locale = I18n.default_locale
-  end
-
   def set_page_params(obj)
     @page_params = @page_params.merge obj
   end
 
   private
+    def set_locale
+      I18n.locale = I18n.default_locale
+    end
+
     def init_page_params
       @page_params = {}
       set_page_params foursquare: { oauth_token: ENV['FOURSQUARE_TOKEN'] }

@@ -2,22 +2,23 @@
 
 ## Requirements
 
-* ruby 2.1.0
-* rails 4.0.3
+* ruby 2.1.1
+* rails 4.1.0
+* gem bundler: `gem install bundler`
 
 ## Install
 
 Create `config/application.yml` from `config/application.example.yml`. Then run:
 
     bundle install
-    rake db:crate
-    rake db:migrate
-    rake db:prepare
+    bundle exec rake db:crate
+    bundle exec rake db:migrate
+    bundle exec rake db:prepare
 
 ## Launch
 
-    rails s
+    bundle exec rails s
 
 ## Test
 
-`@TODO`
+    bundle exec rspec

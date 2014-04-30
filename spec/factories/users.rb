@@ -2,11 +2,10 @@
 
 FactoryGirl.define do
   factory :user do
-    pwd = Faker::Lorem.characters(10)
     name { Faker::Name.name }
     email { Faker::Internet.email }
-    password pwd
-    password_confirmation pwd
+    password 'password'
+    password_confirmation 'password'
     # required if the Devise Confirmable module is used
     # confirmed_at Time.now
   end
