@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403120425) do
+ActiveRecord::Schema.define(version: 20140507141854) do
+
+  create_table "announcements", force: true do |t|
+    t.string   "user_id"
+    t.string   "integer"
+    t.string   "longitude"
+    t.string   "float"
+    t.string   "latitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendships", force: true do |t|
     t.integer "friendable_id"

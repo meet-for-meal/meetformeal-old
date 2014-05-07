@@ -3,6 +3,7 @@ ADMIN_NAME:           John Doe
 ADMIN_PASSWORD:       password
 COOKIE_STORE_KEY:     _meetformeal_incredible_session
 DEVISE_SECRET:        abc123_devise
+FOURSQUARE_TOKEN:     abc123_foursquare
 GMAIL_PASSWORD:       password
 GMAIL_USERNAME:       your.email
 ROLES:                admin user # Don't change this line

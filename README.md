@@ -8,7 +8,9 @@
 
 ## Install
 
-Create `config/application.yml` from `config/application.example.yml`. Then run:
+Create `config/application.yml` from `config/application.example.yml`. Don't forget to change some data with your own information, like `FOURSQUARE_TOKEN`, `GMAIL_USERNAME`, `GMAIL_PASSWORD`.
+
+Then run:
 
     bundle install
     bundle exec rake db:crate
