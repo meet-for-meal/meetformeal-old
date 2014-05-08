@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :totos
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get '/home', to: 'home#main', as: 'homepage'
@@ -10,4 +12,5 @@ Rails.application.routes.draw do
                               sign_out: 'logout'
                             }
   resources :users, only: :show
+  resources :announcements
 end
