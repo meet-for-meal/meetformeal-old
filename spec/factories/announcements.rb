@@ -1,12 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :announcement do
-    user_id "MyString"
-    integer "MyString"
-    longitude "MyString"
-    float "MyString"
-    latitude "MyString"
-    float "MyString"
+    longitude { rand(-90.000000000...90.000000000) }
+    latitude { rand(-90.000000000...90.000000000) }
   end
 end

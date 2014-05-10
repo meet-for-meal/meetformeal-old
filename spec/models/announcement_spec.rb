@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Announcement do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'creates a new instance given a valid attribute' do
+    create :announcement
+  end
 end

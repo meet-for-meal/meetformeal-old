@@ -14,11 +14,9 @@
 ActiveRecord::Schema.define(version: 20140507141854) do
 
   create_table "announcements", force: true do |t|
-    t.string   "user_id"
-    t.string   "integer"
-    t.string   "longitude"
-    t.string   "float"
-    t.string   "latitude"
+    t.integer  "user_id"
+    t.float    "longitude"
+    t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
