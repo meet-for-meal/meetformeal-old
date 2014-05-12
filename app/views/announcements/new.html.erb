@@ -1,1 +1,18 @@
-<h1>Announcements</h1>
+<h1>Create an announcement</h1>
+
+<h4>(Geoloc générée aléatoirement)</h4>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= simple_form_for @announcement do |f| %>
+      <%= f.input :latitude %>
+      <%= f.input :longitude %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <div id="map-canvas"></div>
+  </div>
+</div>
+
+<script id="js-user-location" data-location='[<%= @announcement.latitude %>, <%= @announcement.longitude %>]'></script>
