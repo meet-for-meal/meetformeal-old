@@ -1,6 +1,8 @@
+<% if user_signed_in? %>
 <ul class="nav navbar-nav">
   <li><%= link_to 'Add an announcement', new_announcement_path %></li>
 </ul>
+<% end %>
 <ul class="nav navbar-nav navbar-right">
   <% if user_signed_in? %>
     <li><%= link_to 'Edit account', edit_user_registration_path %></li>

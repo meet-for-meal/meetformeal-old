@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :totos
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get '/home', to: 'home#main', as: 'homepage'

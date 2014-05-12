@@ -1,4 +1,5 @@
 class AnnouncementsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
 
   # GET /announcements
@@ -65,7 +66,6 @@ class AnnouncementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_announcement
       @announcement = Announcement.find(params[:id])
     end

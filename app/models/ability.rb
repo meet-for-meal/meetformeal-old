@@ -5,10 +5,12 @@ class Ability
     user ||= User.new
 
     can :read, :all                   # allow everyone to read everything
-    if user && user.is_admin?
+    if user.is_admin?
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :manage, :all               # do anything
       can :dashboard                  # allow access to dashboard
+    else
+      can [:create, :read], Announcement
     end
     #
     # The first argument to `can` is the action you are giving the user

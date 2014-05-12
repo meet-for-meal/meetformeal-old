@@ -1,4 +1,13 @@
 <h1>Announcement</h1>
 
-<p>Longitude: <%= @announcement.longitude %></p>
-<p>Latitude: <%= @announcement.latitude %></p>
+<div class="row">
+  <div class="col-md-6">
+    <p>Longitude: <%= @announcement.longitude %></p>
+    <p>Latitude: <%= @announcement.latitude %></p>
+  </div>
+  <div class="col-md-6">
+    <div id="map-canvas"></div>
+  </div>
+</div>
+
+<script id="js-user-location" data-location='[<%= @announcement.latitude %>, <%= @announcement.longitude %>]'></script>
