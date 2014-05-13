@@ -45,9 +45,9 @@
   }).call(this)
 
   MFM.createMap = function(selector, name, lat, lng, zoom, marker) {
-    center = new google.maps.LatLng(lat, lng)
-    options = { center: center, zoom: zoom }
-    map = new google.maps.Map(document.getElementById(selector), options)
+    var center = new google.maps.LatLng(lat, lng)
+      , options = { center: center, zoom: zoom }
+      , map = new google.maps.Map(document.getElementById(selector), options)
     this.maps[name] = map
     if(marker) {
       MFM.addMarker('center', name, lat, lng)
@@ -55,6 +55,8 @@
   }
 
   MFM.addMarker = function(name, mapName, lat, lng, opt) {
+    var mapMarkers
+      , options
     opt = opt || {}
     mapMarkers = MFM.markers[mapName] = MFM.markers[mapName] || {}
     options = {
@@ -67,6 +69,11 @@
 
   MFM.getMarkers = function(mapName) {
     return MFM.markers[mapName]
+  }
+
+  MFM.removeMarker = function(mapName, markerName) {
+    MFM.markers[mapName][markerName].setMap(null)
+    delete MFM.markers[mapName][markerName]
   }
 
   MFM.customMarker = function(pinColor) {
