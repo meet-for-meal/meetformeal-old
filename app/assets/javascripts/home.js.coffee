@@ -3,7 +3,7 @@ class User
 
 
 MFM = window.MFM || {}
-currentUser = MFM.currentUser = new User 'rhannequin', 1.289272, 103.863146
+currentUser = MFM.currentUser = new User 'rhannequin', 55.868437, -4.261345
 
 
 $(document).ready ->

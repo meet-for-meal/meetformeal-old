@@ -67,7 +67,12 @@ class AnnouncementsController < ApplicationController
 
   private
     def set_announcement
-      @announcement = Announcement.find(params[:id])
+      begin
+       @announcement = Announcement.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:error] = "This announcement can't be found."
+        redirect_to homepage_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
