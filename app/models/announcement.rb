@@ -10,4 +10,12 @@ class Announcement < ActiveRecord::Base
 
   validates :lat, presence: true
   validates :lng, presence: true
+
+  def self.near(lat, lng, distance = 50)
+    self.within(distance, origin: [lat, lng])
+        .to_json({
+          :include => [{ user: { only: [:name] } }],
+          :only    => [:id, :lat, :lng]
+        })
+  end
 end

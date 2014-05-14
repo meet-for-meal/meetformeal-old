@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe 'routing to announcements' do
-  let(:user) { create(:user) }
-
   it 'routes /announcements/new to annoucements#new' do
     expect(get: '/announcements/new').to route_to(
       controller: 'announcements',
@@ -17,13 +15,19 @@ describe 'routing to announcements' do
     )
   end
 
-  it 'routes /users/1/announcements/:id to announcements#show for id' do
-    announcement = create(:announcement)
-    expect(get: "/users/#{user.id}/announcements/#{announcement.id}").to route_to(
+  it 'routes /users/:user_id/announcements/:id to announcements#show for id 1' do
+    expect(get: '/users/1/announcements/1').to route_to(
       controller: 'announcements',
       action: 'show',
-      user_id: "#{user.id}",
-      id: "#{announcement.id}"
+      user_id: '1',
+      id: '1'
+    )
+  end
+
+  it 'routes /announcements/near to announcements#near' do
+    expect(get: '/announcements/near').to route_to(
+      controller: 'announcements',
+      action: 'near'
     )
   end
 end

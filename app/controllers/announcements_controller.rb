@@ -67,6 +67,15 @@ class AnnouncementsController < ApplicationController
     end
   end
 
+  # GET /announcements/near
+  def near
+    permitted = params.permit(:lat, :lng)
+    unless permitted.has_key?('lat') && permitted.has_key?('lng')
+      return render json: { error: "You must provide 'lat' and 'lng' parameters", status: 400 }
+    end
+    render json: Announcement.near(permitted['lat'], permitted['lng'])
+  end
+
   private
     def set_announcement
       begin
