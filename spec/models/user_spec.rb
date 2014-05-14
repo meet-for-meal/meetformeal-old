@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe User do
-
   it 'creates a new instance given a valid attribute' do
     create :user
+  end
+
+  it 'creates a new instance with an announcement' do
+    create :user_with_announcement
   end
 
   describe 'email' do
@@ -106,5 +109,8 @@ describe User do
     it { should validate_uniqueness_of :email }
   end
 
+  describe 'associations' do
+    it { should have_many(:announcements)}
+  end
 end
 

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # include Amistad::FriendModel
 
+  has_many :announcements, dependent: :destroy
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

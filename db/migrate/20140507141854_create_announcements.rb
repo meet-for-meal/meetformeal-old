@@ -1,9 +1,9 @@
 class CreateAnnouncements < ActiveRecord::Migration
   def change
     create_table :announcements do |t|
-      t.integer :user_id
-      t.float   :longitude
-      t.float   :latitude
+      t.belongs_to :user
+      t.float      :longitude
+      t.float      :latitude
 
       t.timestamps
     end

@@ -13,4 +13,8 @@ FactoryGirl.define do
   factory :admin, parent: :user do
     after(:create) {|user| user.add_role(:admin)}
   end
+
+  factory :user_with_announcement, parent: :user do
+    after(:create) {|user| create(:announcement, user: user)}
+  end
 end
