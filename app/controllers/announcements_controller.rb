@@ -17,8 +17,8 @@ class AnnouncementsController < ApplicationController
   def new
     @announcement = Announcement.new
     # Generate random location near center of Paris
-    @announcement.lat = rand(48.8...48.9)
-    @announcement.lng = rand(2.3...2.4)
+    @announcement.lat = rand(48.8...48.9).round(5)
+    @announcement.lng = rand(2.3...2.4).round(5)
   end
 
   # GET /announcements/1/edit
@@ -36,6 +36,7 @@ class AnnouncementsController < ApplicationController
         format.html { redirect_to user_announcement_path(current_user, @announcement), notice: 'Announcement was successfully created.' }
         format.json { render :show, status: :created, location: user_announcement_path(current_user, @announcement) }
       else
+        flash[:error] = 'Please provide correction values.'
         format.html { render :new }
         format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end

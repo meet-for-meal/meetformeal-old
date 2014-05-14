@@ -44,7 +44,7 @@
     return f
   }).call(this)
 
-  MFM.createMap = function(selector, name, lat, lng, zoom, marker) {
+  MFM.setMap = function(selector, name, lat, lng, zoom, marker) {
     var center = new google.maps.LatLng(lat, lng)
       , options = { center: center, zoom: zoom }
       , map = new google.maps.Map(document.getElementById(selector), options)

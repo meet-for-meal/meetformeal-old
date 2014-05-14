@@ -4,11 +4,13 @@ MFM = window.MFM || {}
 $(document).ready ->
 
   body = $('body')
-  if(body.hasClass('announcements-new') || body.hasClass('announcements-show'))
+  if  body.hasClass('announcements-new') or
+      body.hasClass('announcements-show') or
+      body.hasClass('announcements-create')
 
     form = $('form')
-    latitudeInput = form.find('#announcement_latitude')
-    longitudeInput = form.find('#announcement_longitude')
+    latitudeInput = form.find('#announcement_lat')
+    longitudeInput = form.find('#announcement_lng')
 
     onChangeGeoloc = ->
       MFM.removeMarker('addAnnouncement', 'center')
@@ -19,4 +21,5 @@ $(document).ready ->
     $('.js-changeGeoloc').click onChangeGeoloc
 
     location = $('#js-user-location').data('location')
-    map = MFM.createMap('map-canvas', 'addAnnouncement', location[0], location[1], 12, yes)
+    location = [48.8548, 2.3466] unless location instanceof Array
+    MFM.setMap('map-canvas', 'addAnnouncement', location[0], location[1], 12, yes)

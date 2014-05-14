@@ -9,7 +9,7 @@ feature 'Announcement creation' do
     visit new_announcement_path
   end
 
-  describe 'a valid announcement' do
+  describe 'with a valid announcement' do
     background do
       within 'form' do
         find('#announcement_lat').set announcement.lat
@@ -21,6 +21,21 @@ feature 'Announcement creation' do
 
     scenario 'is created with displaying success alert message' do
       expect(page).to display_flash_message('Announcement was successfully created.')
+    end
+  end
+
+  describe 'with an invalid announcement' do
+    background do
+      within 'form' do
+        find('#announcement_lat').set ''
+        find('#announcement_lng').set ''
+
+        click_button 'Créer un(e) Announcement'
+      end
+    end
+
+    scenario 'is redirected to creation form' do
+      expect(page).to display_flash_message('Please provide correction values.')
     end
   end
 

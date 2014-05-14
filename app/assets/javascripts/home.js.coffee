@@ -12,7 +12,7 @@ $(document).ready ->
 
   initMap = ->
     currentUser = MFM.currentUser
-    MFM.createMap 'map-canvas', mapName, currentUser.lat, currentUser.lng, 13, yes
+    MFM.setMap 'map-canvas', mapName, currentUser.lat, currentUser.lng, 13, yes
 
   initMarkers = (users) ->
     currentUser = MFM.currentUser
