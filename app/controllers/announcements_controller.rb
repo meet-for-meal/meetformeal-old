@@ -29,11 +29,12 @@ class AnnouncementsController < ApplicationController
   # POST /announcements.json
   def create
     @announcement = Announcement.new(announcement_params)
+    @announcement.user = current_user
 
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-        format.json { render :show, status: :created, location: @announcement }
+        format.html { redirect_to user_announcement_path(current_user, @announcement), notice: 'Announcement was successfully created.' }
+        format.json { render :show, status: :created, location: user_announcement_path(current_user, @announcement) }
       else
         format.html { render :new }
         format.json { render json: @announcement.errors, status: :unprocessable_entity }

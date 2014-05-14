@@ -9,6 +9,8 @@ Rails.application.routes.draw do
                               sign_up:  'signup',
                               sign_out: 'logout'
                             }
-  resources :users, only: :show
-  resources :announcements
+  resources :users, only: :show do
+    resources :announcements, only: [:index, :show]
+  end
+  resources :announcements, only: [:new, :create, :edit, :update, :destroy]
 end

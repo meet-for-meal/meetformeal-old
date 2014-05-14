@@ -9,7 +9,7 @@ feature 'Announcement show' do
 
   describe 'a non-created announcement' do
     scenario 'redirects to homepage' do
-      visit announcement_path(1)
+      visit user_announcement_path(user, 1)
       expect(current_path).to eq(homepage_path)
       expect(page).to display_flash_message("This announcement can't be found.")
     end
