@@ -5,8 +5,8 @@
 <div class="row">
   <div class="col-md-6">
     <%= simple_form_for @announcement do |f| %>
-      <%= f.input :latitude, input_html: { step: 0.0001 } %>
-      <%= f.input :longitude, input_html: { step: 0.0001 } %>
+      <%= f.input :lat, input_html: { step: 0.0001 } %>
+      <%= f.input :lng, input_html: { step: 0.0001 } %>
       <%= f.button :submit %>
     <% end %>
     <button class="btn js-changeGeoloc">Update map</button>
@@ -16,4 +16,4 @@
   </div>
 </div>
 
-<script id="js-user-location" data-location='[<%= @announcement.latitude %>, <%= @announcement.longitude %>]'></script>
+<script id="js-user-location" data-location='[<%= @announcement.lat %>, <%= @announcement.lng %>]'></script>

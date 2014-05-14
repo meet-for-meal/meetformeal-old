@@ -12,7 +12,7 @@ describe 'announcements/show' do
   it 'displays the announcement location' do
     assign(:announcement, announcement)
     render
-    expect(rendered).to include(announcement.longitude.to_s)
-    expect(rendered).to include(announcement.latitude.to_s)
+    expect(rendered).to include(announcement.lat.to_s)
+    expect(rendered).to include(announcement.lng.to_s)
   end
 end

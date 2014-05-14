@@ -19,6 +19,7 @@ gem 'unicorn-rails'
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 gem 'amistad'
 gem 'newrelic_rpm'
+gem 'geokit-rails'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc

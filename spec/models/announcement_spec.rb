@@ -12,18 +12,18 @@ describe Announcement do
   describe 'fields' do
     it_behaves_like 'a model with the following database columns',
                     [:user_id, :integer],
-                    [:longitude, :float],
-                    [:latitude, :float]
+                    [:lat, :float],
+                    [:lng, :float]
 
     it_behaves_like 'a model with timestampable columns'
   end
 
   describe 'validations' do
-    it { should validate_presence_of :longitude }
-    it { should validate_presence_of :latitude }
+    it { should validate_presence_of :lat }
+    it { should validate_presence_of :lng }
   end
 
   describe 'associations' do
-    it { should belong_to(:user)}
+    it { should belong_to(:user) }
   end
 end

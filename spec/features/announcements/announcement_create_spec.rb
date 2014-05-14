@@ -12,8 +12,8 @@ feature 'Announcement creation' do
   describe 'a valid announcement' do
     background do
       within 'form' do
-        find('#announcement_latitude').set announcement.latitude
-        find('#announcement_longitude').set announcement.longitude
+        find('#announcement_lat').set announcement.lat
+        find('#announcement_lng').set announcement.lng
 
         click_button 'Créer un(e) Announcement'
       end

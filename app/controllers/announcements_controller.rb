@@ -17,8 +17,8 @@ class AnnouncementsController < ApplicationController
   def new
     @announcement = Announcement.new
     # Generate random location near center of Paris
-    @announcement.latitude = rand(48.8...48.9)
-    @announcement.longitude = rand(2.3...2.4)
+    @announcement.lat = rand(48.8...48.9)
+    @announcement.lng = rand(2.3...2.4)
   end
 
   # GET /announcements/1/edit
@@ -78,6 +78,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:longitude, :latitude)
+      params.require(:announcement).permit(:lat, :lng)
     end
 end
