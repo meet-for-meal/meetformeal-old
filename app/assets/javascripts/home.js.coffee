@@ -27,5 +27,19 @@ $(document).ready ->
           title: venue.name
         MFM.addMarker venue.id, mapName, location.lat, location.lng, markerOpt
 
+  getNearAnnouncements = ->
+    req = $.ajax
+      url: "/announcements/near?lat=#{currentUser.lat}&lng=#{currentUser.lng}"
+      dataType: 'json'
+    req.done (announcements) ->
+      for announcement in announcements
+        title = "Announcement from #{announcement.user.name}"
+        markerOpt =
+          icon: MFM.customMarker('55B53D')
+          title: title
+        MFM.addMarker title, mapName, announcement.lat, announcement.lng, markerOpt
+
+
   initMap()
   initMarkers()
+  getNearAnnouncements()
