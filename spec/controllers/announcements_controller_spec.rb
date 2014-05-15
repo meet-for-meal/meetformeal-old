@@ -45,8 +45,10 @@ describe AnnouncementsController do
       announcement = create :announcement, user: user
       get :near, lat: announcement.lat, lng: announcement.lng
       json = response.body
+      first_announcement = JSON.parse(json).first.to_json
       expect(json).to have_json_path('0/user')
       expect(json).to have_json_path('0/user/name')
+      expect(first_announcement).to include_json(user.to_json).excluding('id', 'email')
     end
   end
 end
