@@ -7,6 +7,42 @@ describe AnnouncementsController do
     sign_in user
   end
 
+  describe 'POST #create' do
+    describe 'with correct parameters' do
+      let(:announcement) { build(:announcement) }
+      let(:parameters) { announcement.attributes }
+
+      it 'creates a new announcement' do
+        post :create, announcement: parameters
+        filter = { lat: announcement.lat, lng: announcement.lng }
+        expect(Announcement.where(filter)).to exist
+      end
+
+      it 'redirects to Announcement' do
+        post :create, announcement: parameters
+        expect(response).to redirect_to(user_announcement_path(user, Announcement.last.id))
+      end
+    end
+
+    describe 'with invalid parameters' do
+      let(:announcement) { build(:announcement, lat: '') }
+      let(:parameters) { announcement.attributes }
+
+      it 'does not create new announcement' do
+        post :create, announcement: parameters
+        expect(Announcement.all).to be_empty
+      end
+
+      it 're-renders the creation form' do
+        post :create, announcement: parameters
+        assigned = assigns(:announcement)
+        expect(response).to render_template(:new)
+        expect(assigned.lat).to eq(announcement.lat)
+        expect(assigned.lng).to eq(announcement.lng)
+      end
+    end
+  end
+
   describe 'GET #near' do
     it 'responds successfully with an HTTP 200 status code' do
       get :near
