@@ -1,6 +1,9 @@
 ADMIN_EMAIL:          john@doe.com
 ADMIN_NAME:           John Doe
 ADMIN_PASSWORD:       password
+TEST_EMAIL:           test@test.com
+TEST_NAME:            Test Account
+TEST_PASSWORD:        password
 COOKIE_STORE_KEY:     _meetformeal_incredible_session
 DEVISE_SECRET:        abc123_devise
 FOURSQUARE_TOKEN:     abc123_foursquare

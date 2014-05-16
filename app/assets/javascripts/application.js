@@ -44,6 +44,18 @@
     return f
   }).call(this)
 
+  MFM.apiRequest = function(endpoint, method, data) {
+    endpoint = endpoint || '/'
+    method = method || 'GET'
+    data = data || {}
+    return $.ajax({
+        url: endpoint
+      , type: method
+      , data: data
+      , dataType: 'json'
+    })
+  }
+
   MFM.setMap = function(selector, name, lat, lng, zoom, marker) {
     var center = new google.maps.LatLng(lat, lng)
       , options = { center: center, zoom: zoom }

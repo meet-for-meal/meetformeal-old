@@ -15,7 +15,8 @@ Then run:
     bundle install
     bundle exec rake db:crate
     bundle exec rake db:migrate
-    bundle exec rake db:prepare
+    bundle exec rake db:schema:load
+    bundle exec rake db:seed
 
 ## Launch
 
