@@ -1,3 +1,12 @@
+def generate_announcement_hash(user)
+  {
+    lat: rand(48.8...48.9).round(5), # Near center of Paris
+    lng: rand(2.3...2.4).round(5),
+    user: user
+  }
+end
+
+
 puts '' # Blank line
 puts 'FILL WITH SEEDS'
 
@@ -31,10 +40,9 @@ puts '    user: ' << test_user.name
 # Announcements
 puts '  Create sample ANNOUNCEMENTS'
 (1..5).each do |i|
-  announcement = Announcement.create({
-    lat: rand(48.8...48.9).round(5), # Near center of Paris
-    lng: rand(2.3...2.4).round(5),
-    user: test_user
-  })
-  puts "    announcement ##{i}: [#{announcement.lat}, #{announcement.lng}]"
+  announcement = Announcement.create generate_announcement_hash(test_user)
+  puts "    announcement ##{i}:    [#{announcement.lat}, #{announcement.lng}]"
 end
+hash = generate_announcement_hash(admin)
+Announcement.create hash
+puts "    announcement admin: [#{hash[:lat]}, #{hash[:lng]}]"
