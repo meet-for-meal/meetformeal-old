@@ -9,6 +9,12 @@ describe 'announcements/show' do
     expect(rendered).to include(announcement.user.name)
   end
 
+  it "displays the announcement's title" do
+    assign(:announcement, announcement)
+    render
+    expect(rendered).to include(announcement.title)
+  end
+
   it 'displays the announcement location' do
     assign(:announcement, announcement)
     render

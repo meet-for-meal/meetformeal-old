@@ -8,6 +8,7 @@ class Announcement < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :title, presence: true
   validates :lat, presence: true
   validates :lng, presence: true
 

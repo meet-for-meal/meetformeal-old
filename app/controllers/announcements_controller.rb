@@ -77,7 +77,7 @@ class AnnouncementsController < ApplicationController
                   .near(current_user.id, permitted['lat'], permitted['lng'])
                   .to_json({
                     :include => [{ user: { only: [:name] } }],
-                    :only    => [:id, :lat, :lng]
+                    :only    => [:id, :title, :lat, :lng]
                   })
   end
 
@@ -93,6 +93,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:lat, :lng)
+      params.require(:announcement).permit(:title, :lat, :lng)
     end
 end

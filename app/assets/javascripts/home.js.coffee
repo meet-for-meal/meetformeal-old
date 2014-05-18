@@ -31,7 +31,7 @@ $(document).ready ->
     req = MFM.apiRequest "/announcements/near?lat=#{currentUser.lat}&lng=#{currentUser.lng}"
     req.done (announcements) ->
       for announcement in announcements
-        title = "Announcement from #{announcement.user.name}"
+        title = announcement.title
         markerOpt =
           icon: MFM.customMarker('55B53D')
           title: title

@@ -12,6 +12,7 @@ feature 'Announcement creation' do
   describe 'with a valid announcement' do
     background do
       within 'form' do
+        find('#announcement_title').set announcement.title
         find('#announcement_lat').set announcement.lat
         find('#announcement_lng').set announcement.lng
 

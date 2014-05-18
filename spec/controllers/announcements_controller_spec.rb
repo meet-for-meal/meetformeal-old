@@ -10,11 +10,11 @@ describe AnnouncementsController do
   describe 'POST #create' do
     describe 'with correct parameters' do
       let(:announcement) { build(:announcement) }
-      let(:parameters) { announcement.attributes }
+      let(:parameters) { { lat: announcement.lat, lng: announcement.lng, title: announcement.title } }
 
       it 'creates a new announcement' do
         post :create, announcement: parameters
-        filter = { lat: announcement.lat, lng: announcement.lng }
+        filter = parameters
         expect(Announcement.where(filter)).to exist
       end
 
@@ -25,7 +25,7 @@ describe AnnouncementsController do
     end
 
     describe 'with invalid parameters' do
-      let(:announcement) { build(:announcement, lat: '') }
+      let(:announcement) { build(:announcement, title: '') }
       let(:parameters) { announcement.attributes }
 
       it 'does not create new announcement' do

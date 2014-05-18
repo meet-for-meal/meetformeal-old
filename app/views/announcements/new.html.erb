@@ -3,6 +3,7 @@
     <h1>Create an announcement</h1>
     <h4>(Geoloc générée aléatoirement)</h4>
     <%= simple_form_for @announcement do |f| %>
+      <%= f.input :title %>
       <%= f.input :lat, input_html: { step: 0.0001, placeholder: 'e.g. 48.8548' } %>
       <%= f.input :lng, input_html: { step: 0.0001, placeholder: 'e.g. 2.3466' } %>
       <%= f.button :submit %>
