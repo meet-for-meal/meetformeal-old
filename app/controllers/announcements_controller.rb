@@ -73,7 +73,12 @@ class AnnouncementsController < ApplicationController
     unless permitted.has_key?('lat') && permitted.has_key?('lng')
       return render json: { error: "You must provide 'lat' and 'lng' parameters", status: 400 }
     end
-    render json: Announcement.near(current_user.id, permitted['lat'], permitted['lng'])
+    render json: Announcement
+                  .near(current_user.id, permitted['lat'], permitted['lng'])
+                  .to_json({
+                    :include => [{ user: { only: [:name] } }],
+                    :only    => [:id, :lat, :lng]
+                  })
   end
 
   private

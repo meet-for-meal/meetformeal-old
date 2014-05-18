@@ -14,9 +14,5 @@ class Announcement < ActiveRecord::Base
   def self.near(from_user_id, lat, lng, distance = 50)
     self.within(distance, origin: [lat, lng])
         .where.not(user_id: from_user_id)
-        .to_json({
-          :include => [{ user: { only: [:name] } }],
-          :only    => [:id, :lat, :lng]
-        })
   end
 end

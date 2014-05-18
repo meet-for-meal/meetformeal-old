@@ -44,6 +44,9 @@ describe AnnouncementsController do
   end
 
   describe 'GET #near' do
+    let(:another_user) { create(:user) }
+    let(:announcement) { create(:announcement, user: another_user) }
+
     it 'responds successfully with an HTTP 200 status code' do
       get :near
       expect(response).to be_success
@@ -56,7 +59,6 @@ describe AnnouncementsController do
     end
 
     it 'returns an array of Announcement' do
-      announcement = build(:announcement)
       get :near, lat: announcement.lat, lng: announcement.lng
       expect(JSON.parse(response.body)).to be_a_kind_of Array
     end
@@ -71,20 +73,18 @@ describe AnnouncementsController do
     end
 
     it 'contains at least one announcement' do
-      announcement = create :announcement
       get :near, lat: announcement.lat, lng: announcement.lng
       json = response.body
       expect(json).to include_json(announcement.to_json).excluding('user', 'user_id')
     end
 
     it "contains announcements' user information" do
-      announcement = create :announcement, user: user
       get :near, lat: announcement.lat, lng: announcement.lng
       json = response.body
       first_announcement = JSON.parse(json).first.to_json
       expect(json).to have_json_path('0/user')
       expect(json).to have_json_path('0/user/name')
-      expect(first_announcement).to include_json(user.to_json).excluding('id', 'email')
+      expect(first_announcement).to include_json(another_user.to_json).excluding('id', 'email')
     end
   end
 end
