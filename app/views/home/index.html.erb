@@ -10,55 +10,45 @@
 <section id="container">
 
   <div class="wrapper">
+
     <div id="intro">
       <h1>Meet for Meal</h1>
-
-      <%= link_to(root_path) do %>
-        <%= image_tag('logo.png', :id => 'logo') %>
-      <% end %>
-
-      <h2>
-        Eat better. Eat together.
-      </h2>
+      <a href="index.html"><%= image_tag('logo.png', :class => 'big') %></a>
+      <h2>Eat better. Eat together.</h2>
     </div>
 
-    <div id="welcome">
-      <p>
-        <strong>Meet for Meal</strong> ouvrira très bientôt ses portes.<br>
-        Rendez-vous sur notre page <a href="https://www.facebook.com/meetformeal" target="_blank">Facebook</a> pour plus d'information.
-      </p>
-
-      <p>
-        <strong>Meet for Meal</strong> est un réseau social utilisant la <strong>géolocalisation</strong> pour trouver et rencontrer des <strong>partenaires culinaires</strong> par affinités proches de vous.
-      </p>
-
-      <div id="social-buttons">
-        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fmeetformeal&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=21&amp;appId=355885751119934" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px; width:160px; float:left;" allowTransparency="true"></iframe>
-
-        <a href="https://twitter.com/meetformeal" class="twitter-follow-button" data-show-count="false">Follow @meetformeal</a>
+    <div id="login">
+      <div id="welcome">
+        <h2>Un réseau de partage</h2>
+        <p>
+          Meet for Meal est un réseau qui permet de trouver des partenaires de repas à travers une recherche en temps réel qui vous connecte aux personnes proches de vous.
+        </p>
+        <p>
+          Trouvez simplement des partenaires culinaires que vous pensez être les plus intéressants pour partager un repas avec vous.
+        </p>
       </div>
+
+      <form id="login-form" action="index.html">
+        <p>
+          <label for="email">Entrez votre email</label>
+          <input type="text" id="email" name="email" value="">
+        </p>
+        <p>
+          <label for="password">Entrez votre mot de passe</label>
+          <input type="password" id="password" name="password">
+        </p>
+        <p>
+          <input type="submit" value="Se connecter">
+        </p>
+      </form>
+
+      <p id="extra-form">
+        <a href="register.html">Cliquez ici pour ouvrir un compte Meet for Meal</a>
+      </p>
     </div>
 
   </div>
 
 </section>
 
-<footer>
-
-</footer>
-
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/fr_FR/all.js#xfbml=1&appId=553352714678387";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<footer></footer>
