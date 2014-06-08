@@ -13,7 +13,9 @@
 
     <div id="intro">
       <h1>Meet for Meal</h1>
-      <a href="index.html"><%= image_tag('logo.png', :class => 'big') %></a>
+      <%= link_to homepage_path do %>
+        <%= image_tag('logo.png', :class => 'big') %>
+      <% end %>
       <h2>Eat better. Eat together.</h2>
     </div>
 
