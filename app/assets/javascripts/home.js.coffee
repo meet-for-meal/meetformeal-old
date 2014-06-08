@@ -12,7 +12,7 @@ $(document).ready ->
 
   initMap = ->
     currentUser = MFM.currentUser
-    MFM.setMap 'map-canvas', mapName, currentUser.lat, currentUser.lng, 13, yes
+    MFM.setMap 'googlemaps', mapName, currentUser.lat, currentUser.lng, 13, yes
 
   initMarkers = (users) ->
     currentUser = MFM.currentUser
@@ -26,6 +26,20 @@ $(document).ready ->
           icon: MFM.customMarker('335BB7')
           title: venue.name
         MFM.addMarker venue.id, mapName, location.lat, location.lng, markerOpt
+
+  initSlider = ->
+    $('html').click ->
+      # Hide the menus if visible
+      $('#notifications').slideUp 200
+    $('.toggle-notif').click (e) ->
+      e.stopPropagation()
+      $('#notifications').slideToggle 200
+      $(this).children('.notif').remove()
+    $('#featured-restaurants').after('<div id="nav">').cycle
+      fx:     'fade'
+      speed:   1000
+      timeout: 3000
+      pager:  '#nav'
 
   getNearAnnouncements = ->
     req = MFM.apiRequest "/announcements/near?lat=#{currentUser.lat}&lng=#{currentUser.lng}"
@@ -41,3 +55,4 @@ $(document).ready ->
   initMap()
   initMarkers()
   getNearAnnouncements()
+  initSlider()

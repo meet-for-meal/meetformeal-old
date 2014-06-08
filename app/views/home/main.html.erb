@@ -1,3 +1,132 @@
-<h3>Home</h3>
+<!-- start: Map -->
+<div style="position:relative;">
 
-<div id="map-canvas"></div>
+  <!-- starts: Google Maps -->
+  <div id="googlemaps-container-top"></div>
+  <div id="googlemaps" class="google-map google-map-full"></div>
+  <div id="googlemaps-container-bottom"></div>
+
+  <div id="closest-users">
+    <h3>Utilisateurs proches de vous</h3>
+    <ul>
+      <li class="user">
+        <a href="announcement.html">
+          <img src="/assets/users/alexandra.jpg" width="40" height="40" class="avatar" alt="">
+          <span class="user-title">Alexandra Martin</span>
+          <span class="user-time">12H - 13H</span>
+          <span class="user-tags">#communication #musique #badminton</span>
+        </a>
+      </li>
+      <li class="user">
+        <a href="announcement.html">
+          <img src="/assets/users/herve.jpg" width="40" height="40" class="avatar" alt="">
+          <span class="user-title">Hervé Tran</span>
+          <span class="user-time">13H - 14H30</span>
+          <span class="user-tags">#multimedia #guitare #blues</span>
+        </a>
+      </li>
+      <li class="user">
+        <a href="announcement.html">
+          <img src="/assets/users/pierre.jpg" width="40" height="40" class="avatar" alt="">
+          <span class="user-title">Pierre Grimaud</span>
+          <span class="user-time">13H - 14H</span>
+          <span class="user-tags">#informatique #chat</span>
+        </a>
+      </li>
+      <li class="user">
+        <a href="announcement.html">
+          <img src="/assets/users/romain.jpg" width="40" height="40" class="avatar" alt="">
+          <span class="user-title">Romain Deligny</span>
+          <span class="user-time">12H - 13H30</span>
+          <span class="user-tags">#infirmier #football</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<!-- end: Map -->
+
+<div class="wrapper home">
+
+  <div class="col-container">
+    <div class="col-2">
+      <h2>Recherche avancée</h2>
+      <form id="user-search-form" action="announcementsearch.html">
+        <p>
+          <label for="time-start"><strong><i class="icon-time"></i> Quand ? </strong></label>
+          De <input type="text" id="time-start"> à <input type="text" id="time-end" >
+          <input type="submit" class="btn" value="Trouver">
+        </p>
+        <p>
+          <label for="interests"><strong><i class="icon-heart"></i> Goûts / Intérêts</strong></label>
+          <input type="text" id="interests">
+        </p>
+      </form>
+    </div>
+    <div id="current-user" class="col-1">
+      <img src="/assets/users/herve.jpg" width="64" height="64" class="avatar" alt="">
+      <h3><a href="#" class="black">Hervé Tran</a></h3>
+      <span class="user-tags"><a href="#">#multimedia</a> <a href="#">#guitare</a> <a href="#">#blues</a></span>
+      <span><a href="announcementcreate.html" class="btn"><i class="icon-pencil"></i> Poster une annonce</a></span>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <hr>
+
+    <h2>À découvrir</h2>
+
+    <div id="featured-restaurants">
+      <div class="restaurant">
+        <img src="/assets/restaurants/ocinq.jpg" title="Restaurant Ocinq" alt="">
+        <div class="restaurant-infos">
+          <a href="#" title="Restaurant Ocinq">
+            <h3>Restaurant Ocinq</h3>
+            <p>Situé à quelques pas de Montparnasse, rue de la Gaîté, le restaurant Ocinq vous accueille dans un cadre exceptionnel : décoration moderne aux teintes chaleureuses, ambiance lounge, large baie vitrée, il a tout pour plaire !</p>
+          </a>
+        </div>
+      </div>
+      <div class="restaurant">
+        <img src="/assets/restaurants/creperie-framboise.jpg" title="Crêperie Framboise" alt="">
+        <div class="restaurant-infos">
+          <a href="#" title="Crêperie Framboise">
+            <h3>Crêperie Framboise</h3>
+            <p>La Crêperie Framboise, située dans le 8ème arrondissement de Paris, à deux pas du rond-point des Champs-Élysées, vous invite pour une pause gourmande dans un cadre élégant, moderne et très lumineux. </p>
+          </a>
+        </div>
+      </div>
+      <div class="restaurant">
+        <img src="/assets/restaurants/vingt-vins-dart.jpg" title="Vingt vins d'art" alt="">
+        <div class="restaurant-infos">
+          <a href="#" title="Vingt vins d'art">
+            <h3>Vingt vins d'art</h3>
+            <p>Dans le Marais, entre les métros Saint-Paul et Pont Marie, le Vingt vins d'art a ouvert ses portes tout récemment. À la fois bar à (très bons) vins, restaurant et galerie d'art, le lieu propose aussi quelques concerts pour des soirées chaudement recommandées !</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-1">
+    <hr>
+
+    <h2>Meet For Meal</h2>
+    <p>
+      Le principe du site est simple: Trouver un partenaire pour partager un repas.
+    </p>
+    <p>
+      Vous êtes seul ce midi (/soir) ? Recherchez un partenaire aux alentours afin de partager un moment ensemble autour d’un repas. Vous pouvez effectuer une recherche par type de restaurant ou par tranche horaires et choisir, parmi la liste des personnes libres, celle qui vous intéresse ! La visibilité de ses centres d’intérêts vous aidera à choisir un sujet de conversation.
+    </p>
+    <p>
+      Personne ne vous intéresse ? Postez votre propre annonce !
+      La recherche de partenaire est effectuée dans un rayon de 1km aux alentours de votre géolocalisation.
+    </p>
+  </div>
+
+  <div class="col-2"></div>
+
+  <div class="col-1"></div>
+
+</div>

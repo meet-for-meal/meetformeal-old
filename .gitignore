@@ -86,3 +86,6 @@ pickle-email-*.html
 
 # Compiled assets
 /public/assets/
+
+# tmp
+/mfm

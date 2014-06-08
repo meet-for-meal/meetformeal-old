@@ -1,257 +1,208 @@
+@import "compass/css3";
+@import "general/base";
+
+/* Index styles
+-------------------------------------------------------------- */
 .home-main {
 
-  #map-canvas {
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    height: 400px;
-    border: 2px solid #000;
+  #googlemaps-container-top {
+    position: relative;
+    z-index: 2;
+    @include box-shadow(inset 0px 3px 3px rgba(0,0,0,.25));
+    height: 20px;
   }
+
+  #googlemaps-container-bottom {
+    position: relative;
+    z-index: 2;
+    @include box-shadow(inset 0px -3px 3px rgba(0,0,0,.25));
+    height: 20px;
+    margin-top: -40px;
+    border-bottom: 5px solid $color-grey-light-1;
+  }
+
+  #googlemaps{
+    position: relative;
+    z-index: 1;
+    height: 400px;
+    width: 100%;
+    top: -20px;
+  }
+
+  #closest-users {
+    background: rgba(255,255,255,0.8);
+    right: 20px;
+    z-index: 400;
+    bottom: 40px;
+    position: absolute;
+
+    h3 {
+      background:rgba(0,0,0,0.8);
+      padding:10px;
+      color:$color-grey-light-3;
+      @include border-radius(3px 3px 0px 0px);
+    }
+
+    a {
+      color:$color-grey-dark-3;
+      &:hover {
+        color:$color-primary-1;
+      }
+    }
+
+    ul {
+      padding:10px;
+
+      li.user {
+        clear:both;
+        overflow:hidden;
+        margin-bottom:5px;
+
+        img {
+          float:left;
+          margin:0px 5px 5px 0px;
+        }
+
+        span {
+          display:block;
+        }
+
+      }
+
+      .user-title {
+        font-size:14px;
+        font-weight:bold;
+      }
+
+      .user-time {
+        font-size:11px;
+      }
+
+      .user-tags {
+        font-size:12px;
+      }
+
+    }
+
+  }
+
+  #current-user {
+
+    img {
+      float:left;
+      margin:0px 10px 10px 0px;
+    }
+
+    h3 {
+      clear:none;
+    }
+
+    span {
+      display:block;
+      font-size:12px;
+      line-height:25px;
+    }
+
+  }
+
+
+  #user-search-form {
+    background:$color-grey-light-2;
+    padding:10px;
+    @include border-radius(3px);
+
+    p:last-child {
+      margin-bottom:0px;
+    }
+
+    .btn {
+      float:right;
+    }
+
+    label {
+      display: inline-block;
+      width: 120px;
+      margin-right: 15px;
+    }
+
+    input[type="text"] {
+      color: $color-grey-dark-3;
+      padding: 4px 5px;
+      line-height: 13px;
+      border-radius: 3px;
+      border: 1px solid $color-grey-light-4;
+    }
+
+  }
+
+  #featured-restaurants {
+
+    .restaurant {
+      position:relative;
+      width:620px;
+      height:344px;
+      cursor:pointer;
+      &:hover {
+        @include opacity(0.9);
+      }
+
+      img {
+        width:100%;
+        height:100%;
+      }
+
+    }
+
+    .restaurant-infos {
+      position:absolute;
+      bottom:0;
+      width:100%;
+      padding:10px 15px;
+      background: rgba(93, 38, 21, 0.68);
+      @include box-sizing(border-box);
+
+      a, h3 {
+        color:$color-white;
+      }
+
+      p {
+        margin:5px 0px 0px 0px;
+      }
+
+    }
+
+
+  }
+
+  #nav {
+
+    margin-top:10px;
+
+    a {
+      display: inline-block;
+      background: $color-grey-light-2;
+      color: $color-white;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-weight: normal;
+      margin-right:5px;
+      &.activeSlide {
+        background: $color-primary-1;
+      }
+    }
+
+  }
+
+
+
+  @import "general/announcements";
+  @import "general/restaurants";
 
 }
 
 .home-index {
 
-  font-family: "Helvetica Neue", Helvetica, Arial,sans-serif;
-  line-height: 1;
-
-  &, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, font, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td {
-    background: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    clear: both;
-    font-weight: normal;
-  }
-  ol, ul {
-    list-style: none;
-  }
-  blockquote {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after {
-    content: '';
-    content: none;
-  }
-  del {
-    text-decoration: line-through;
-  }
-  /* tables still need 'cellspacing="0"' in the markup */
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  a img {
-    border: none;
-  }
-
-  /* General
-  -------------------------------------------------------------- */
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    font-weight: bold;
-    color: #333333;
-    text-rendering: optimizelegibility;
-  }
-
-  a, a:hover, a:focus, a:active {
-    color:#d5a035;
-    text-decoration:none;
-    outline:none;
-  }
-
-  a:hover {
-    color: #b78528;
-  }
-
-  /* Homepage
-  -------------------------------------------------------------- */
-
-  #large_bg_img {
-    display: block;
-    height: 100%;
-    left: 0;
-    min-width: 930px;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    background: black;
-  }
-
-  #large_bg_img_overlay {
-    background: asset-url('fill.png', image) repeat;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    z-index: 1;
-  }
-
-  #large_bg_img img.big {
-    min-height: 750px;
-    min-width: 1190px;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0;
-  }
-
-  #container {
-    margin: 0;
-    position: relative;
-    z-index: 200;
-  }
-
-  #container .wrapper {
-    width: 100%;
-    margin:0 auto;
-    text-align:center;
-    padding:0 20px;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    -o-box-sizing:border-box;
-  }
-
-  #intro {
-    width: 100%;
-    text-align:center;
-    margin: 40px auto 0 auto;
-    padding:0px;
-  }
-
-  #intro h1 {
-    text-indent:-9999px;
-    height: 0px;
-  }
-
-  #intro img {
-    width:100px;
-    height:100px;
-  }
-
-  #intro img:hover {
-    opacity:0.7;
-  }
-
-  #intro h2 {
-    margin-top:10px;
-    text-transform:uppercase;
-    color:#d5a035;
-    font-size:13px;
-    font-weight:300;
-    text-shadow: 0 1px 2px rgba(0,0,0, 0.8);
-  }
-
-  #login {
-    float:left;
-    width:100%;
-    margin:20px 0px;
-  }
-
-  #welcome {
-    width: 480px;
-    margin:50px auto;
-    text-align:center;
-  }
-
-  #welcome p {
-    color:#E4E4E4;
-    font-size:14px;
-    line-height:18px;
-    text-shadow: #000 0 1px 2px;
-    margin-bottom:30px;
-  }
-
-  #welcome #social-buttons {
-    padding-top:30px;
-    clear:both;
-    width: 320px;
-    margin: 0 auto;
-  }
-
-  #welcome h2 {
-    color:#E4E4E4;
-    font-size:20px;
-    margin-bottom:15px;
-    text-shadow: #000 0 1px 2px;
-  }
-
-  #login-form {
-    padding:20px;
-    /*background:url('../img/50overlay.png');*/
-  }
-
-  #login-form input {
-    width:200px;
-    background: #FFFFFF;
-    border: 1px solid #333;
-    padding: 4px;
-    color: #333333;
-    line-height: 18px;
-    margin-bottom:20px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 1px 10px rgba(0,0,0, 0.5);
-    -moz-box-shadow: inset 0 1px 10px rgba(0,0,0, 0.5);
-    box-shadow: inset 0 1px 10px rgba(0,0,0, 0.5);
-  }
-
-  #login-form input[type="submit"] {
-    width:100px;
-    background: #d5a035;
-    margin-bottom:0px;
-    cursor:pointer;
-    color:#000000;
-    text-shadow: 0px -1px 1px rgba(0,0,0, 0.25);
-    -webkit-box-shadow: 0 2px 1px rgba(0,0,0, 0.2), inset 0 1px 1px rgba(255,255,255, 0.5), inset 0 10px 20px rgba(255,255,255, 0.20), inset 0 -10px 20px rgba(0,0,0, 0.12);
-    -moz-box-shadow: 0 2px 1px rgba(0,0,0, 0.2), inset 0 1px 1px rgba(255,255,255, 0.5), inset 0 10px 20px rgba(255,255,255, 0.20), inset 0 -10px 20px rgba(0,0,0, 0.12);
-    box-shadow: 0 2px 1px rgba(0,0,0, 0.2), inset 0 1px 1px rgba(255,255,255, 0.5), inset 0 10px 20px rgba(255,255,255, 0.20), inset 0 -10px 20px rgba(0,0,0, 0.12);
-  }
-
-  #login-form input[type="submit"]:hover {
-    background: #aa7f2b;
-  }
-
-  #login-form p {
-    color:#CCC;
-    font-size:12px;
-  }
-
-  #login-form label {
-    display:block;
-    margin-bottom:5px;
-  }
-
-  #extra-form a {
-    color:#E4E4E4;
-    font-size:11px;
-  }
-
-  #extra-form a:hover {
-    color:#CCC;
-  }
-
-  @media (max-width: 720px) {
-    #welcome {
-      width: 100%;
-    }
-  }
 
 }

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require ./jquery.cycle.all
 //= require_tree ./general
 
 ;(function(win, doc) {

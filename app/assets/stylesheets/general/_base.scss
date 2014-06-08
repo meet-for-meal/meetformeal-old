@@ -1,0 +1,116 @@
+/* Variables
+-------------------------------------------------------------- */
+
+// Colors
+$color-primary-1: #d55035;
+$color-primary-2: #a3311a;
+
+$color-grey-light-1: #f6f6f6;
+$color-grey-light-2: #f1f1f1;
+$color-grey-light-3: #e4e4e4;
+$color-grey-light-4: #cccccc;
+$color-grey-light-5: #b3b3b3;
+
+$color-grey-regular-1: #aaa;
+$color-grey-regular-2: #888;
+
+$color-grey-dark-1: #656675;
+$color-grey-dark-2: #555666;
+$color-grey-dark-3: #333333;
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+// Fonts
+$font-1: "Droid Sans";
+$font-2: "Economica", Arial, sans-serif;
+$font-3: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+/* General
+-------------------------------------------------------------- */
+
+body {
+  font-family: $font-1;
+  color:$color-grey-dark-3;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-2;
+  margin: 0;
+  font-weight: bold;
+  color: $color-grey-dark-3;
+  text-rendering: optimizelegibility;
+}
+
+p {
+  font-size:12px;
+  margin-bottom:10px;
+  line-height: 18px;
+}
+
+hr {
+  margin:20px 0px;
+  border:1px solid $color-grey-light-2;
+}
+
+a, a:hover, a:focus, a:active {
+  color:$color-primary-1;
+  text-decoration:none;
+  outline:none;
+}
+
+a:hover {
+  color: $color-primary-2;
+}
+
+a:hover img {
+  opacity:0.8;
+}
+
+.wrapper {
+  width:960px;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.black {
+  color:$color-grey-dark-3;
+}
+
+.red {
+  color:$color-primary-1;
+}
+
+img.avatar {
+  float:left;
+  margin:0px 10px 10px 0px;
+  @include border-radius(3px);
+}
+
+.btn {
+  background:$color-primary-1;
+  @include border-radius(3px);
+  border:1px solid $color-primary-2;
+  color:$color-white;
+  padding:5px 10px;
+  display:inline-block;
+  cursor:pointer;
+}
+
+.btn:hover {
+  background:$color-primary-2;
+  color: $color-grey-light-2;
+  border:1px solid $color-primary-2;
+}
+
+.btn-neutral {
+  background:#AAA;
+  border:1px solid $color-grey-regular-2;
+}
+
+a.btn {
+  line-height: 21px;
+  font-size: 11px;
+  padding: 0px 10px;
+}
