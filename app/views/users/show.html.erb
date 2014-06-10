@@ -1,4 +1,71 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<%= link_to 'Edit account', edit_user_registration_path %>
+<section id="container">
+
+  <div id="large_bg_img" class="clearfix">
+    <div id="large_bg_img_overlay"></div>
+    <%= image_tag('bg2.jpg', :class => 'big', id: 'image') %>
+    <h1>Mon profil</h1>
+  </div>
+
+  <div class="wrapper userpage">
+
+    <div class="col-2">
+      <h2>Informations sur votre profil</h2>
+      <%= image_tag('users/herve.jpg', :class => 'avatar', width: 64, height: 64) %>
+      <p>
+        <i class="icon-user"></i><strong>Hervé Tran</strong>
+      </p>
+      <p>
+        Sexe : <strong>Homme</strong>
+      </p>
+      <p>
+        Age : <strong>22</strong>
+      </p>
+      <p>
+        Goûts culinaires : <a href="#">#italien</a> <a href="#">#japonais</a>
+      </p>
+      <p>
+        Centres d'intérêts : <a href="#">#guitare</a> <a href="#">#blues</a> <a href="#">#poker</a>
+      </p>
+      <p>
+        Présentation : Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+      </p>
+      <p>
+        <i class="icon-eye-open"></i>Profil complété à <strong>90%</strong>
+      </p>
+      <p>
+        <a href="#" class="btn"><i class="icon-cog icon-plus"></i>Modifier votre profil</a>
+      </p>
+    </div>
+
+    <div class="col-1">
+      <h2>Nouvelles demandes d'ajout</h2>
+
+      <div class="user">
+        <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+        <p>
+          <a href="userpage.html" class="black"><strong>Alexandra Martin</strong></a><br>
+          <a href="#">#communication</a> <a href="#">#musique</a> <a href="#">#badminton</a><br>
+          <a href="#" class="btn"><i class="icon-ok"></i>Accepter</a> <a href="#" class="btn btn-neutral"><i class="icon-remove"></i>Ignorer</a>
+        </p>
+      </div>
+
+      <hr>
+
+      <h2>Mes amis</h2>
+
+      <a href="userpage.html" title="Pierre">
+        <%= image_tag('users/pierre.jpg', :class => 'avatar', width: 64, height: 64) %>
+      </a>
+      <a href="userpage.html" title="Romain">
+        <%= image_tag('users/romain.jpg', :class => 'avatar', width: 64, height: 64) %>
+      </a>
+    </div>
+
+    <div class="col-2"></div>
+
+    <div class="col-1"></div>
+
+  </div>
+
+</section>

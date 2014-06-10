@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def class_if_current_page(compared_url)
+    'class="current"'.html_safe if request.original_url == compared_url
+  end
+
 end
