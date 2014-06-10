@@ -5,5 +5,6 @@ Rails.application.config.assets.precompile += [
   'users.js',
   'announcements.js',
   'announcements.css',
+  'sessions.css',
   'jquery.cycle.all.js'
 ]

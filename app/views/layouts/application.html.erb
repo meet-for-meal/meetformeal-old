@@ -2,7 +2,7 @@
 <html>
   <head>
     <% action_complete_name = "#{controller_name}-#{action_name}" %>
-    <% is_landing_page = action_complete_name == 'home-index' %>
+    <% is_landing_page = action_complete_name == 'sessions-new' %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meetformeal<%= ' - ' << yield(:title) if content_for?(:title) %></title>
@@ -35,113 +35,13 @@
 
     <% else %>
 
-      <header>
-
-        <div class="wrapper">
-
-          <a href="index.html" id="logo"><img src="/assets/logo-mini.png" alt=""></a>
-
-          <form id="search-form" action="userpage.html">
-            <input type="text" name="search" placeholder="Rechercher une personne ou un restaurant...">
-          </form>
-
-          <nav>
-            <ul>
-              <li><a href="#" class="no-text toggle-notif"><i class="icon-info-sign"></i><span class="notif">3</span></a></li>
-              <li class="current"><a href="index.html"><i class="icon-home"></i> Accueil</a></li>
-              <li><a href="restaurant.html"><i class="icon-map-marker"></i>Les restaurants</a></li>
-              <li><a href="mypage.html"><i class="icon-user"></i>Mon profil</a></li>
-              <li><a href="message.html" class="no-text"><i class="icon-envelope"></i><span class="notif">12</span></a></li>
-              <li><a href="homepage.html" class="no-text"><i class="icon-off"></i></a></li>
-            </ul>
-          </nav>
-
-          <div id="notifications">
-            <ul>
-              <li>
-                <a href="#">
-                  <span class="red">Alexandra Martin</span> a proposé une annonce.<br>
-                  <span class="message-date">28/02/2013 à 14h42</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="red">Rémy Hannequin</span> souhaite devenir votre ami.<br>
-                  <span class="message-date">28/02/2013 à 14h42</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="red">Pierre Grimaud</span> a proposé une annonce.<br>
-                  <span class="message-date">28/02/2013 à 14h42</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="red">Romain Deligny</span> a proposé une annonce.<br>
-                  <span class="message-date">28/02/2013 à 14h42</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-      </header>
+      <%= render 'layouts/navigation' %>
 
       <section id="container">
-
-        <%= render 'layouts/messages' %>
         <%= yield %>
-
       </section>
 
-      <footer>
-
-        <div class="wrapper">
-
-          <div class="col-left">
-            <h3>À propos de Meet For Meal</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<br>
-              Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-            </p>
-          </div>
-
-          <div class="col-middle">
-            <h3>Contactez-nous</h3>
-            <p>
-              <strong>Meet For Meal</strong><br>
-              61 rue lafayette<br>
-              93100 Rue Rapatal<br>
-              FRANCE<br>
-              <a href="mailto:contact@meetformeal.com">contact@meetformeal.com</a>
-            </p>
-          </div>
-
-          <div class="col-right">
-
-            <h3>Suivez-nous</h3>
-
-            <div id="footer-menu-back-to-top">
-              <a href="#"></a>
-            </div>
-
-            <p>
-              Nos pages Facebook et Twitter seront bientôt disponibles !
-            </p>
-
-          </div>
-
-          <div id="copyright">
-            <p>
-              &copy; 2014, Meet For Meal.
-            </p>
-          </div>
-
-        </div>
-
-      </footer>
+      <%= render 'layouts/footer' %>
 
       <script type="text/params" id="js-global" data-params='<%= @page_params.to_json.html_safe %>'></script>
       <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>

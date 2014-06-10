@@ -1,17 +1,46 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'MeetForMeal', homepage_path, class: 'navbar-brand' %>
+<header>
+
+  <div class="wrapper">
+
+    <%= link_to homepage_path, { id: 'logo' } do %>
+      <%= image_tag 'logo-mini.png' %>
+    <% end %>
+
+    <form id="search-form" action="userpage.html">
+      <input type="text" name="search" placeholder="Rechercher une personne ou un restaurant...">
+    </form>
+
+    <%= render 'layouts/navigation_links' %>
+
+    <div id="notifications">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="red">Alexandra Martin</span> a proposé une annonce.<br>
+            <span class="message-date">28/02/2013 à 14h42</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="red">Rémy Hannequin</span> souhaite devenir votre ami.<br>
+            <span class="message-date">28/02/2013 à 14h42</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="red">Pierre Grimaud</span> a proposé une annonce.<br>
+            <span class="message-date">28/02/2013 à 14h42</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="red">Romain Deligny</span> a proposé une annonce.<br>
+            <span class="message-date">28/02/2013 à 14h42</span>
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="collapse navbar-collapse">
-      <%= render 'layouts/navigation_links' %>
-    </div>
+
   </div>
-</nav>
+
+</header>

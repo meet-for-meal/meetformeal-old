@@ -2,10 +2,6 @@ Rails.application.routes.draw do
   # Admin Dashboard
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  # Index and homepage
-  root 'home#index'
-  get '/home', to: 'home#main', as: 'homepage'
-
   # User management
   devise_for  :users,
               controllers:  { registrations: 'registrations' },
@@ -14,6 +10,12 @@ Rails.application.routes.draw do
                               sign_up:  'signup',
                               sign_out: 'logout'
                             }
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
+
+  # Homepage
+  get '/home', to: 'home#index', as: 'homepage'
 
   # Public user information
   resources :users, only: :show do

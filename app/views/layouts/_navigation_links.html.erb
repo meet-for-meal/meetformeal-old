@@ -1,20 +1,14 @@
-<% if user_signed_in? %>
-<ul class="nav navbar-nav">
-  <li><%= link_to 'Add an announcement', new_announcement_path %></li>
-</ul>
-<% end %>
-<ul class="nav navbar-nav navbar-right">
-  <% if user_signed_in? %>
-    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <% else %>
-    <li><%= link_to 'Register', new_user_registration_path %></li>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <li><%= link_to 'Logout', destroy_user_session_path, method: 'delete' %></li>
-  <% else %>
-    <li><%= link_to 'Login', new_user_session_path %></li>
-  <% end %>
-</ul>
-
-
+<nav>
+  <ul>
+    <li><a href="#" class="no-text toggle-notif"><i class="icon-info-sign"></i><span class="notif">3</span></a></li>
+    <li class="current"><a href="index.html"><i class="icon-home"></i> Accueil</a></li>
+    <li><a href="restaurant.html"><i class="icon-map-marker"></i>Les restaurants</a></li>
+    <li><a href="mypage.html"><i class="icon-user"></i>Mon profil</a></li>
+    <li><a href="message.html" class="no-text"><i class="icon-envelope"></i><span class="notif">12</span></a></li>
+    <li>
+      <%= link_to destroy_user_session_path, { method: 'delete', :class => 'no-text' } do %>
+        <i class="icon-off"></i>
+      <% end %>
+    </li>
+  </ul>
+</nav>
