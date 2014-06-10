@@ -11,14 +11,14 @@
   line-height: 14px;
   vertical-align: -3px;
   /*vertical-align: text-top;*/
-  background-image: asset-url('icons-black.png', image);
+  background-image: asset-url('icons-black.png');
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
 
 .btn > [class^="icon-"],
 .btn >[class*=" icon-"] {
-  background-image: asset-url('icons-white.png', image);
+  background-image: asset-url('icons-white.png');
 }
 
 .icon-red,
@@ -34,7 +34,7 @@
 .dropdown-menu > .active > a > [class*=" icon-"],
 .dropdown-submenu:hover > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"] {
-  background-image: url("../../img/icons-red.png");
+  background-image: asset-url('icons-red.png');
 }
 
 .icon-glass {

@@ -255,7 +255,7 @@
   }
 
   #large_bg_img_overlay {
-    background: asset-url('fill.png', image) repeat;
+    background: asset-url('fill.png') repeat;
     display: block;
     width: 100%;
     height: 100%;
