@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% action_complete_name = "#{controller_name}-#{action_name}" %>
-    <% is_landing_page = action_complete_name == 'sessions-new' %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meetformeal<%= ' - ' << yield(:title) if content_for?(:title) %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Meetformeal' %>">
@@ -18,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
 
-    <% unless is_landing_page %>
+    <% if user_signed_in? %>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <% end %>
     <% unless Rails.application.assets.find_asset("#{controller_name}.css").nil? %>
@@ -27,9 +24,9 @@
 
     <%= csrf_meta_tags %>
   </head>
-  <body class="<%= action_complete_name %>">
+  <body class="<%= "#{controller_name}-#{action_name}" %>">
 
-    <% if is_landing_page %>
+    <% unless user_signed_in? %>
 
       <%= yield %>
 

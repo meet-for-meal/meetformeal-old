@@ -1,12 +1,12 @@
-<%= render partial: 'layouts/header_banner', locals: {title: 'Mon profil'} %>
+<%= render partial: 'layouts/header_banner', locals: {title: @title} %>
 
 <div class="wrapper userpage">
 
   <div class="col-2">
-    <h2>Informations sur votre profil</h2>
+    <h2>Informations sur <%= @is_own_profile ? 'votre profil' : "l'utilisateur" %></h2>
     <%= image_tag('users/herve.jpg', :class => 'avatar', width: 64, height: 64) %>
     <p>
-      <i class="icon-user"></i><strong><%= current_user.name %></strong>
+      <i class="icon-user"></i><strong><%= @user.name %></strong>
     </p>
     <p>
       Sexe : <strong>Homme</strong>
@@ -28,11 +28,20 @@
       <i class="icon-eye-open"></i>Profil complété à <strong>90%</strong>
     </p>
     <p>
-      <a href="#" class="btn"><i class="icon-cog icon-plus"></i>Modifier votre profil</a>
+      <% if @is_own_profile %>
+        <%= link_to edit_user_registration_path, :class => 'btn' do %>
+          <i class="icon-cog icon-plus"></i>Modifier votre profil</a>
+        <% end %>
+      <% else %>
+        <%= link_to '#', :class => 'btn' do %>
+          <i class="icon-cog icon-plus"></i>Ajouter en ami</a>
+        <% end %>
+      <% end %>
     </p>
   </div>
 
   <div class="col-1">
+    <% if @is_own_profile %>
     <h2>Nouvelles demandes d'ajout</h2>
 
     <div class="user">
@@ -45,6 +54,7 @@
     </div>
 
     <hr>
+    <% end %>
 
     <h2>Mes amis</h2>
 
@@ -55,9 +65,5 @@
       <%= image_tag('users/romain.jpg', :class => 'avatar', width: 64, height: 64) %>
     </a>
   </div>
-
-  <div class="col-2"></div>
-
-  <div class="col-1"></div>
 
 </div>
