@@ -1,6 +1,10 @@
 def generate_announcement_hash(user, i)
+  now = DateTime.now
   {
     title: "Test announcement ##{i}",
+    description: "Hello, I'm #{user.name} and this is the announcement ##{i}",
+    time_from: now + 2.hours,
+    time_to: now + 4.hours,
     lat: rand(48.8...48.9).round(5), # Near center of Paris
     lng: rand(2.3...2.4).round(5),
     user: user
