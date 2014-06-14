@@ -31,9 +31,18 @@ admin = User.create name: ENV['ADMIN_NAME'].dup,
                     gender: ENV['ADMIN_GENDER'].dup,
                     password: ENV['ADMIN_PASSWORD'].dup,
                     password_confirmation: ENV['ADMIN_PASSWORD'].dup
+
 puts '    user: ' << admin.name
 puts "  Add admin role to user #{admin.name}"
 admin.add_role :admin
+admin_foods = 'italian, japanese, indian, pakistani'
+puts "  Add foods [#{admin_foods}] to user #{admin.name}"
+admin.food_list = admin_foods
+admin.save
+admin_hobbies = 'soccer, coding, handball'
+puts "  Add hobbies [#{admin_hobbies}] to user #{admin.name}"
+admin.hobby_list = admin_hobbies
+admin.save
 
 puts '  Create default test USER'
 test_user = User.create name: ENV['TEST_NAME'].dup,
@@ -41,7 +50,16 @@ test_user = User.create name: ENV['TEST_NAME'].dup,
                         gender: ENV['TEST_GENDER'].dup,
                         password: ENV['TEST_PASSWORD'].dup,
                         password_confirmation: ENV['TEST_PASSWORD'].dup
+
 puts '    user: ' << test_user.name
+test_user_foods = 'spanish, english, indian, pakistani'
+puts "  Add foods [#{test_user_foods}] to user #{test_user.name}"
+test_user.food_list = test_user_foods
+test_user.save
+test_user_hobbies = 'guitare, drum, coding'
+puts "  Add hobbies [#{test_user_hobbies}] to user #{test_user.name}"
+test_user.hobby_list = test_user_hobbies
+test_user.save
 
 
 # Announcements

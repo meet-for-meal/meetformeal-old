@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   enum gender: [ :male, :female ]
+  acts_as_taggable_on :foods, :hobbies
 end

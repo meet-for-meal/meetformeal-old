@@ -46,6 +46,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.2.6)
+      activerecord (>= 3, < 5)
     amistad (0.9.2)
       squeel
     arel (5.0.1.20140414130214)
@@ -298,6 +300,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   amistad
   better_errors
   binding_of_caller

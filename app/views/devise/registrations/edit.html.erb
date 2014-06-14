@@ -19,7 +19,17 @@
       <fieldset>
         <div class="form-group">
           <%= f.label :gender %>
-          <%= f.select :gender, options_for_select(User.genders.collect { |s| [s[0].humanize, s[0]] }, selected: resource.gender), {} , :class => 'form-control' %>
+          <%= f.select :gender, options_for_select(User.genders.collect { |s| [s[0].humanize, s[0]] }, selected: resource.gender), {}, :class => 'form-control' %>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="form-group">
+          <%= f.label :food_list %>
+          <%= f.text_area :food_list, :class => 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :hobby_list %>
+          <%= f.text_area :hobby_list, :class => 'form-control' %>
         </div>
       </fieldset>
       <fieldset>

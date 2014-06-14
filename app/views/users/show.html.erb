@@ -15,10 +15,10 @@
       Age : <strong>22</strong>
     </p>
     <p>
-      Goûts culinaires : <a href="#">#italien</a> <a href="#">#japonais</a>
+      Goûts culinaires : <%= tag_list_links(@user.food_list) %>
     </p>
     <p>
-      Centres d'intérêts : <a href="#">#guitare</a> <a href="#">#blues</a> <a href="#">#poker</a>
+      Centres d'intérêts : <%= tag_list_links(@user.hobby_list) %>
     </p>
     <p>
       Présentation : Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
