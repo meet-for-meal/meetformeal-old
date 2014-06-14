@@ -28,6 +28,7 @@ end
 puts '  Create default admin USER with admin role'
 admin = User.create name: ENV['ADMIN_NAME'].dup,
                     email: ENV['ADMIN_EMAIL'].dup,
+                    gender: ENV['ADMIN_GENDER'].dup,
                     password: ENV['ADMIN_PASSWORD'].dup,
                     password_confirmation: ENV['ADMIN_PASSWORD'].dup
 puts '    user: ' << admin.name
@@ -37,6 +38,7 @@ admin.add_role :admin
 puts '  Create default test USER'
 test_user = User.create name: ENV['TEST_NAME'].dup,
                         email: ENV['TEST_EMAIL'].dup,
+                        gender: ENV['TEST_GENDER'].dup,
                         password: ENV['TEST_PASSWORD'].dup,
                         password_confirmation: ENV['TEST_PASSWORD'].dup
 puts '    user: ' << test_user.name

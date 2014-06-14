@@ -11,6 +11,10 @@
           <%= f.text_field :name, autofocus: true, :class => 'form-control' %>
         </div>
         <div class="form-group">
+          <%= f.label :gender %>
+          <%= f.select :gender, options_for_select(User.genders.collect { |s| [s[0].humanize, s[0]] }, selected: resource.gender), {} , :class => 'form-control' %>
+        </div>
+        <div class="form-group">
           <%= f.label :email %>
           <%= f.email_field :email, :class => 'form-control' %>
         </div>

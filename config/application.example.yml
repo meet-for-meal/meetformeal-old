@@ -1,4 +1,5 @@
 ADMIN_EMAIL:          john@doe.com
+ADMIN_GENDER:         male
 ADMIN_NAME:           John Doe
 ADMIN_PASSWORD:       password
 COOKIE_STORE_KEY:     _meetformeal_incredible_session
@@ -11,5 +12,6 @@ SECRET_KEY_BASE:      abc123_prod
 SECRET_KEY_BASE_DEV:  abc123_dev
 SECRET_KEY_BASE_TEST: abc123_test
 TEST_EMAIL:           test@test.com
+TEST_GENDER:          female
 TEST_NAME:            Test Account
 TEST_PASSWORD:        password
