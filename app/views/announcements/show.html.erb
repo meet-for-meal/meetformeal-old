@@ -12,8 +12,8 @@
       </p>
       <p>
         <i class="icon-time"></i>Disponibilité :
-        <strong><%= @announcement.time_from.hour %>H</strong> -
-        <strong><%= @announcement.time_to.hour %>H</strong> -
+        <strong><%= l @announcement.time_from, format: :real_short %></strong> -
+        <strong><%= l @announcement.time_to, format: :real_short %></strong> -
         <i class="icon-map-marker"></i>Localisation :
         <strong>
           <span class="js-announcement-location">

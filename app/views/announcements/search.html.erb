@@ -1,0 +1,65 @@
+<%= render partial: 'layouts/header_banner', locals: {title: 'Résultats de la recherche'} %>
+
+
+<div class="wrapper">
+
+  <div class="col-2">
+    <h2>Les annonces proches de vous</h2>
+    <ul>
+      <% @announcements.each do |announcement| %>
+        <li class="result-search">
+          <div class="user-interact">
+            <%= link_to user_announcement_path(announcement.user, announcement), :class => 'btn see-profile' do %>
+              <i class="icon-eye-open"></i>En savoir plus
+            <% end %>
+            <%= link_to '#', :class => 'btn add-friend' do %>
+              <i class="icon-plus"></i>Inviter à manger
+            <% end %>
+          </div>
+          <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 40, height: 40) %>
+          <%= link_to announcement.user do %>
+            <span class="user-title"><%= announcement.user.name %></span>
+          <% end %>
+          <div class="user-content">
+            <p class="announce-msg">&laquo; <%= announcement.description %> ... &raquo;<p>
+            <p>
+              <i class="icon-time"></i>Disponibilité :
+              <strong>
+                <%= l announcement.time_from, format: :real_short %>
+              </strong> -
+              <strong>
+                <%= l announcement.time_to, format: :real_short %>
+              </strong>
+              <br>
+              <i class="icon-map-marker"></i>Localisation :
+              <strong>
+                <span class="js-announcement-location" data-location="[<%= announcement.lat %>, <%= announcement.lng %>]">
+                  <%= image_tag 'loader.gif' %>
+                </span>
+              </strong>
+              <br>
+              <i class="icon-heart"></i>Centres d'intérêts : <%= tag_list_links(announcement.user.hobby_list) %>
+              <br>
+              <i class="icon-glass"></i>Préférences culinaires : <%= tag_list_links(announcement.user.food_list) %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="conversations" class="col-1">
+    <h2>Meet For Meal</h2>
+    <p>
+      Le principe du site est simple: Trouver un partenaire pour partager un repas.
+    </p>
+    <p>
+      Vous êtes seul ce midi (/soir) ? Recherchez un partenaire aux alentours afin de partager un moment ensemble autour d’un repas. Vous pouvez effectuer une recherche par type de restaurant ou par tranche horaires et choisir, parmi la liste des personnes libres, celle qui vous intéresse ! La visibilité de ses centres d’intérêts vous aidera à choisir un sujet de conversation.
+    </p>
+    <p>
+      Personne ne vous intéresse ? Postez votre propre annonce !
+      La recherche de partenaire est effectuée dans un rayon de 1km aux alentours de votre géolocalisation.
+    </p>
+  </div>
+
+</div>
