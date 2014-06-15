@@ -1,25 +1,14 @@
-# MFM = window.MFM || {}
+MFM = window.MFM || {}
 
+$(document).ready ->
 
-# $(document).ready ->
-
-#   body = $('body')
-#   if  body.hasClass('announcements-new') or
-#       body.hasClass('announcements-show') or
-#       body.hasClass('announcements-create')
-
-#     form = $('form')
-#     latitudeInput = form.find('#announcement_lat')
-#     longitudeInput = form.find('#announcement_lng')
-
-#     onChangeGeoloc = ->
-#       MFM.removeMarker('addAnnouncement', 'center')
-#       MFM.addMarker('center', 'addAnnouncement', latitudeInput.val(), longitudeInput.val())
-
-#     latitudeInput.change onChangeGeoloc
-#     longitudeInput.change onChangeGeoloc
-#     $('.js-changeGeoloc').click onChangeGeoloc
-
-#     location = $('#js-user-location').data('location')
-#     location = [48.8548, 2.3466] unless location instanceof Array
-#     MFM.setMap('map-canvas', 'addAnnouncement', location[0], location[1], 12, yes)
+  # Announcements#show actions
+  if $('body').hasClass('announcements-show')
+    location = $('#js-user-location').data('location')
+    lat = location[0]
+    lng = location[1]
+    latLng = new google.maps.LatLng(lat, lng)
+    MFM.setMap('map-canvas', 'showAnnoucement', lat, lng, 12, yes)
+    new google.maps.Geocoder().geocode { 'location': latLng }, (results, status) ->
+      address = results[0].address_components
+      $('.js-announcement-location').html(address[1].long_name + ', ' + address[2].long_name)

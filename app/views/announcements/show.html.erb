@@ -1,14 +1,53 @@
-<h1>Announcement : <%= @announcement.title %></h1>
+<%= render partial: 'layouts/header_banner', locals: {title: @announcement.title} %>
 
-<div class="row">
-  <div class="col-md-6">
-    <p>User: <%= link_to @announcement.user.name, user_path(@announcement.user) %></p>
-    <p>Latitude: <%= @announcement.lat %></p>
-    <p>Longitude: <%= @announcement.lng %></p>
+<div class="wrapper">
+
+  <div class="col-2">
+
+    <h2>Détail de l'annonce :</h2>
+
+    <div id="announcement-info">
+      <p>
+        &laquo; <%= @announcement.description %> &raquo;
+      </p>
+      <p>
+        <i class="icon-time"></i>Disponibilité :
+        <strong><%= @announcement.time_from.hour %>H</strong> -
+        <strong><%= @announcement.time_to.hour %>H</strong> -
+        <i class="icon-map-marker"></i>Localisation :
+        <strong>
+          <span class="js-announcement-location">
+            <%= image_tag 'loader.gif' %>
+          </span>
+        </strong>
+      </p>
+    </div>
+
+    <div id="announcement-user">
+      <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+      <p>
+        Proposé par <strong><%= @user.name %></strong><br>
+        <i class="icon-heart"></i>Centres d'intérêts  : <%= tag_list_links(@user.hobby_list) %><br>
+        <i class="icon-glass"></i>Préférences culinaires : <%= tag_list_links(@user.food_list) %><br>
+      </p>
+      <p>
+        <%= link_to user_path(@user), :class => 'btn' do %>
+          <i class="icon-eye-open icon-red"></i> Voir son profil
+        <% end %>
+      </p>
+    </div>
+
   </div>
-  <div class="col-md-6">
-    <div id="map-canvas"></div>
+
+  <div class="col-1">
+    <div class="gmap" id="map-canvas"></div>
+
+    <h2>Répondre à l'annonce :</h2>
+    <p>
+      <a href="#" class="btn"><i class="icon-pencil"></i>Je suis intéressé !</a>
+    </p>
   </div>
+
 </div>
 
 <script id="js-user-location" data-location='[<%= @announcement.lat %>, <%= @announcement.lng %>]'></script>

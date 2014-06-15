@@ -52,7 +52,7 @@ test_user = User.create name: ENV['TEST_NAME'].dup,
                         password_confirmation: ENV['TEST_PASSWORD'].dup
 
 puts '    user: ' << test_user.name
-test_user_foods = 'spanish, english, indian, pakistani'
+test_user_foods = 'spanish, british, indian, pakistani'
 puts "  Add foods [#{test_user_foods}] to user #{test_user.name}"
 test_user.food_list = test_user_foods
 test_user.save
