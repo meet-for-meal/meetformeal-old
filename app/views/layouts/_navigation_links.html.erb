@@ -10,10 +10,10 @@
         <i class="icon-home"></i> Accueil
       <% end %>
     </li>
-    <li <%= class_if_current_page('') %>>
-      <a href="restaurant.html">
+    <li <%= class_if_current_page(restaurants_url) %>>
+      <%= link_to restaurants_path do %>
         <i class="icon-map-marker"></i>Les restaurants
-      </a>
+      <% end %>
     </li>
     <li <%= class_if_current_page(user_url(current_user)) %>>
       <%= link_to user_path(current_user) do %>

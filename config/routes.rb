@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   resources :announcements, only: [:new, :create, :edit, :update, :destroy]
   get '/announcements/near',   to: 'announcements#near',   as: 'near_announcements'
   get '/announcements/search', to: 'announcements#search', as: 'search_announcements'
+
+  # Restaurants
+  get '/restaurants', to: 'restaurants#index', as: 'restaurants'
 end
