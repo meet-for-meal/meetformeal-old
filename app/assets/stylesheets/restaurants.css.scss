@@ -10,8 +10,15 @@
   height:200px;
 }
 
-#map-action-bar {
+.js-manual-location {
+  text-align: center;
 
+  .hidden {
+    display: none;
+  }
+}
+
+#map-action-bar {
   .actions {
     text-align:center;
     margin-bottom:10px;
@@ -27,8 +34,6 @@
     }
 
   }
-
-
 }
 
 ul#search-result li {
