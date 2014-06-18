@@ -8,11 +8,16 @@ Handlebars.registerHelper 'categoryLogo', (categories) ->
   "#{icon.prefix}bg_32#{icon.suffix}"
 
 
+class User
+  constructor: (@lat, @lng) ->
+
+
 MFM = window.MFM || {}
 
 
 $(document).ready ->
 
+  currentUser = null
   mapName = 'mainMap'
   template = HandlebarsTemplates['restaurants/item_list']
   geolocOptions =
@@ -22,30 +27,43 @@ $(document).ready ->
   fakeLat = 48.8567
   fakeLng = 2.3508
 
+  $('.find-venues').on 'click', (e) ->
+    MFM.removeAllMarkers mapName, no
+    if currentUser?
+      initVenues currentUser.lat, currentUser.lng
+
 
   initPosition = ->
-    if navigator.geolocation?
-      navigator.geolocation.getCurrentPosition successPosition, errorPosition, geolocOptions
+    geo = navigator.geolocation
+    if geo?
+      geo.getCurrentPosition successPosition, errorPosition, geolocOptions
     else
       initMap fakeLat, fakeLng
+      initVenues fakeLat, fakeLng
 
   successPosition = (position) ->
     coords = position.coords
-    initMap coords.latitude, coords.longitude
+    lat = coords.latitude
+    lng = coords.longitude
+    initMap lat, lng
     # initMap fakeLat, fakeLng
+    initVenues lat, lng
 
   errorPosition = (err) ->
     cl = 'hidden'
     $('.js-manual-location').find(".#{cl}").removeClass(cl)
 
   initMap = (lat, lng) ->
-    categories = getSelectedCategories()
+    currentUser = new User lat, lng
     MFM.setMap 'googlemaps', mapName, lat, lng, 13, yes
+
+  initVenues = (lat, lng) ->
+    categories = getSelectedCategories()
     searchFoursquareVenues lat, lng, categories
 
   getSelectedCategories = ->
     categories = []
-    $('.categories').find('input').each (i, el) ->
+    $('.categories').find('input:checked').each (i, el) ->
       categories.push $(el).attr('name')
     categories
 
@@ -78,7 +96,10 @@ $(document).ready ->
         if results.length > 0
           place = results[0]
           location = place.geometry.location
-          initMap location.k, location.A
+          lat = location.k
+          lng = location.A
+          initMap lat, lng
+          initVenues lat, lng
 
 
   initPosition()

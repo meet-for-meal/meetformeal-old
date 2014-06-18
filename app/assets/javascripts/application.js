@@ -91,6 +91,15 @@
     delete MFM.markers[mapName][markerName]
   }
 
+  MFM.removeAllMarkers = function(mapName, evenCenter) {
+    for(marker in MFM.markers[mapName]) {
+      if(!evenCenter && marker === 'center') {
+        continue
+      }
+      MFM.removeMarker(mapName, marker)
+    }
+  }
+
   MFM.customMarker = function(pinColor) {
     return pinImage = new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
       new google.maps.Size(21, 34),
