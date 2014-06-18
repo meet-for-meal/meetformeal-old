@@ -1,0 +1,52 @@
+@import "compass/css3";
+@import "base";
+@import "general/form";
+
+/* Announcements styles
+-------------------------------------------------------------- */
+
+#announcement-user {
+  background:$color-grey-light-2;
+  padding:10px;
+  overflow:hidden;
+
+  p {
+    float:left;
+    margin-bottom:0px;
+    &:last-child {
+      text-align: center;
+      float:right;
+    }
+  }
+
+}
+
+/* Announcement search result */
+
+.result-search {
+
+  margin: 20px;
+
+  .user-interact {
+    margin-bottom: 3px;
+  }
+
+  .user-title{
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .user-content{
+    margin: 10px 5px 5px 50px;
+
+    p:last-child {
+      margin-bottom:0;
+    }
+
+  }
+
+  .announce-msg{
+    font-style: italic;
+  }
+
+}

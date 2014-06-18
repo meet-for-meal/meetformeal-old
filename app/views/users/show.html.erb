@@ -1,4 +1,69 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
-<%= link_to 'Edit account', edit_user_registration_path %>
+<%= render partial: 'layouts/header_banner', locals: {title: @title} %>
+
+<div class="wrapper userpage">
+
+  <div class="col-2">
+    <h2>Informations sur <%= @is_own_profile ? 'votre profil' : "l'utilisateur" %></h2>
+    <%= image_tag('users/herve.jpg', :class => 'avatar', width: 64, height: 64) %>
+    <p>
+      <i class="icon-user"></i><strong><%= @user.name %></strong>
+    </p>
+    <p>
+      Sexe : <strong><%= @user.gender.capitalize %></strong>
+    </p>
+    <p>
+      Age : <strong>22</strong>
+    </p>
+    <p>
+      Goûts culinaires : <%= tag_list_links(@user.food_list) %>
+    </p>
+    <p>
+      Centres d'intérêts : <%= tag_list_links(@user.hobby_list) %>
+    </p>
+    <p>
+      Présentation : Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+      Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+    </p>
+    <p>
+      <i class="icon-eye-open"></i>Profil complété à <strong>90%</strong>
+    </p>
+    <p>
+      <% if @is_own_profile %>
+        <%= link_to edit_user_registration_path, :class => 'btn' do %>
+          <i class="icon-cog icon-plus"></i>Modifier votre profil</a>
+        <% end %>
+      <% else %>
+        <%= link_to '#', :class => 'btn' do %>
+          <i class="icon-envelope icon-plus"></i>Ajouter en ami</a>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="col-1">
+    <% if @is_own_profile %>
+    <h2>Nouvelles demandes d'ajout</h2>
+
+    <div class="user">
+      <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+      <p>
+        <a href="userpage.html" class="black"><strong>Alexandra Martin</strong></a><br>
+        <a href="#">#communication</a> <a href="#">#musique</a> <a href="#">#badminton</a><br>
+        <a href="#" class="btn"><i class="icon-ok"></i>Accepter</a> <a href="#" class="btn btn-neutral"><i class="icon-remove"></i>Ignorer</a>
+      </p>
+    </div>
+
+    <hr>
+    <% end %>
+
+    <h2>Mes amis</h2>
+
+    <a href="userpage.html" title="Pierre">
+      <%= image_tag('users/pierre.jpg', :class => 'avatar', width: 64, height: 64) %>
+    </a>
+    <a href="userpage.html" title="Romain">
+      <%= image_tag('users/romain.jpg', :class => 'avatar', width: 64, height: 64) %>
+    </a>
+  </div>
+
+</div>

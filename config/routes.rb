@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  # Admin Dashboard
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'home#index'
-  get '/home', to: 'home#main', as: 'homepage'
+
+  # User management
   devise_for  :users,
               controllers:  { registrations: 'registrations' },
               path_names:   {
@@ -9,5 +10,23 @@ Rails.application.routes.draw do
                               sign_up:  'signup',
                               sign_out: 'logout'
                             }
-  resources :users, only: :show
+  devise_scope :user do
+    root to: 'devise/sessions#new'
+  end
+
+  # Homepage
+  get '/home', to: 'home#index', as: 'homepage'
+
+  # Public user information
+  resources :users, only: :show do
+    resources :announcements, only: [:index, :show]
+  end
+
+  # Announcements
+  resources :announcements, only: [:new, :create, :edit, :update, :destroy]
+  get '/announcements/near',   to: 'announcements#near',   as: 'near_announcements'
+  get '/announcements/search', to: 'announcements#search', as: 'search_announcements'
+
+  # Restaurants
+  get '/restaurants', to: 'restaurants#index', as: 'restaurants'
 end

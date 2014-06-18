@@ -1,0 +1,30 @@
+<li>
+  <img src="{{ categoryLogo categories }}" class="restaurant-category">
+  <p class="restaurant-description">
+    <span><strong class="title red">{{ name }}</strong></span><br>
+    <span>Catégorie : <strong>{{displayCategories categories}}</strong></span><br>
+    <span>Adresse :
+      {{#if location.address}}
+        <strong>
+        {{ location.address }}
+        {{#if location.city}}
+          - {{ location.city }}
+        {{/if}}
+        {{#if location.postalCode}}
+          ({{ location.postalCode }})
+        {{/if}}
+        </strong>
+      {{else}}
+        <em>Adresse indisponible</em>
+      {{/if}}
+    </span>
+    {{#if specials.items}}
+      {{#each specials.items}}
+        <br>
+        <span>&laquo;
+          {{message}}
+        &raquo;</span>
+      {{/each}}
+    {{/if}}
+  </p>
+</li>

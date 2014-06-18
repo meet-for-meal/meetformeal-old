@@ -1,0 +1,34 @@
+<%= render partial: 'layouts/header_banner', locals: {title: 'Créer une annonce'} %>
+
+<div class="wrapper">
+    <div class="col-2 centered">
+
+      <%= simple_form_for @announcement, html: { id: 'announcement-form' } do |f| %>
+        <p>
+          <%= f.label :time_from do %>
+            <strong><i class="icon-time"></i> Vos disponibilités ? </strong>
+          <% end %>
+          De <%= f.input :time_from, label: false %> à <%= f.input :time_to, label: false %>
+        </p>
+        <p>
+          <%= f.label :title do %>
+            <strong><i class="icon-pencil"></i> Titre de l'annonce</strong>
+          <% end %>
+          <%= f.input :title, label: false %>
+        </p>
+        <p>
+          <%= f.label :description do %>
+            <strong><i class="icon-pencil"></i> Description de l'annonce</strong>
+          <% end %>
+          <%= f.input :description, label: false %>
+          <!-- <textarea id="announcement_description" cols="30" rows="10" name="announcement_description"></textarea> -->
+        </p>
+        <p>
+          <input type="hidden" name="announcement[lat]" value="<%= rand(48.8...48.9).round(5) %>">
+          <input type="hidden" name="announcement[lng]" value="<%= rand(2.3...2.4).round(5) %>">
+          <%= f.button :submit, "Créer l'annonce", html: { :class => 'btn' } %>
+        </p>
+      <% end %>
+
+  </div>
+</div>

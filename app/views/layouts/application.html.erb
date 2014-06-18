@@ -10,31 +10,35 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Serif">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Economica:700,400italic">
+
+    <% if user_signed_in? %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <% end %>
     <% unless Rails.application.assets.find_asset("#{controller_name}.css").nil? %>
       <%= stylesheet_link_tag controller_name, media: 'all', 'data-turbolinks-track' => true  %>
     <% end %>
 
     <%= csrf_meta_tags %>
-
-    <% action_complete_name = "#{controller_name}-#{action_name}" %>
-    <% is_landing_page = action_complete_name == 'home-index' %>
   </head>
   <body class="<%= "#{controller_name}-#{action_name}" %>">
 
-    <% if is_landing_page %>
+    <% unless user_signed_in? %>
 
       <%= yield %>
 
     <% else %>
 
-      <header>
-        <%= render 'layouts/navigation' %>
-      </header>
-      <main role="main">
-         <%= render 'layouts/messages' %>
-         <%= yield %>
-      </main>
+      <%= render 'layouts/navigation' %>
+
+      <section id="container">
+        <%= yield %>
+      </section>
+
+      <%= render 'layouts/footer' %>
 
       <script type="text/params" id="js-global" data-params='<%= @page_params.to_json.html_safe %>'></script>
       <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&key=#{ENV['GOOGLE_MAPS_KEY']}&sensor=false".html_safe %>

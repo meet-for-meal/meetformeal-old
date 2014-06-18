@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  before_action :set_user, only: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @is_own_profile = @user == current_user
+    @title = @is_own_profile ? 'Mon profil' : "Profil de #{@user.name}"
   end
+
+  private
+    def set_user
+      begin
+        @user = User.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        flash[:error] = "This user can't be found."
+        redirect_to homepage_path
+      end
+    end
 
 end

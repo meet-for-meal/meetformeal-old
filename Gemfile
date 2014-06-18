@@ -2,23 +2,29 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 gem 'rails', '4.1.0'
 gem 'sass-rails', '~> 4.0.3'
+gem 'compass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'handlebars_assets'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '>= 3.0.0.0'
-gem 'cancan'
-gem 'devise'
 gem 'figaro'
-gem 'rolify'
 gem 'simple_form'
 gem 'therubyracer', platform: :ruby
 gem 'unicorn'
 gem 'unicorn-rails'
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
-gem 'amistad'
 gem 'newrelic_rpm'
+gem 'geokit-rails'
+
+# User model
+gem 'rolify'
+gem 'cancan'
+gem 'devise'
+gem 'amistad'
+gem 'acts-as-taggable-on'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -53,4 +59,5 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'json_spec'
 end

@@ -1,0 +1,14 @@
+@import "compass/css3";
+@import "general/base";
+@import "general/announcements";
+
+// Show announcement map
+.announcements-show {
+  .gmap {
+    margin: 0px 0px 20px;
+    padding: 0px;
+    width: 100%;
+    height: 200px;
+    border: 2px solid $color-primary-1;
+  }
+}

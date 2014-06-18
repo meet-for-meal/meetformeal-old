@@ -1,0 +1,70 @@
+@import "compass/css3";
+@import "base";
+
+/* Restaurants styles
+-------------------------------------------------------------- */
+
+/* Restaurant search */
+
+#restaurant-map #googlemaps {
+  height:200px;
+}
+
+#map-action-bar {
+
+  .actions {
+    text-align:center;
+    margin-bottom:10px;
+  }
+
+  .categories {
+    padding-left:20px;
+
+    label {
+      width: 220px;
+      font-size:11px;
+      display:inline-block;
+    }
+
+  }
+
+
+}
+
+ul#search-result li {
+  padding:10px;
+  border-bottom:1px solid $color-grey-light-2;
+  overflow:hidden;
+
+  &:last-child {
+    border-bottom:0px;
+  }
+
+  &.featured {
+    background:$color-grey-light-2;
+  }
+
+  p {
+    margin-bottom:0px;
+  }
+
+  .restaurant-description {
+    float: left;
+    width:90%;
+
+    .btn {
+      margin-top:5px;
+    }
+
+    .title {
+      font-size:14px;
+    }
+  }
+
+}
+
+img.restaurant-category {
+  float:left;
+  margin:0px 10px 0px 0px;
+}
+

@@ -1,1 +1,13 @@
-Rails.application.config.assets.precompile += %w( home.js home.css registrations.js users.js )
+Rails.application.config.assets.precompile += [
+  'home.js',
+  'home.css',
+  'registrations.js',
+  'registrations.css',
+  'users.js',
+  'announcements.js',
+  'announcements.css',
+  'restaurants.js',
+  'restaurants.css',
+  'sessions.css',
+  'jquery.cycle.all.js'
+]
