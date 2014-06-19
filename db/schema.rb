@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619094241) do
+ActiveRecord::Schema.define(version: 20140619161430) do
 
   create_table "announcements", force: true do |t|
     t.integer  "user_id"
@@ -26,13 +26,12 @@ ActiveRecord::Schema.define(version: 20140619094241) do
   end
 
   create_table "friendships", force: true do |t|
-    t.integer "friendable_id"
-    t.integer "friend_id"
-    t.integer "blocker_id"
-    t.boolean "pending",       default: true
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.boolean  "approved"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "friendships", ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
 
   create_table "roles", force: true do |t|
     t.string   "name"

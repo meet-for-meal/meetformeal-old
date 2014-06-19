@@ -23,7 +23,7 @@ gem 'geokit-rails'
 gem 'rolify'
 gem 'cancan'
 gem 'devise'
-gem 'amistad'
+gem 'acts_as_friendable', git: 'https://github.com/rhannequin/acts_as_friendable.git'
 gem 'acts-as-taggable-on'
 
 # bundle exec rake doc:rails generates the API under doc/api.

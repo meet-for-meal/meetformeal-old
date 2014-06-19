@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  # include Amistad::FriendModel
+  include ActsAsFriendable
 
   has_many :subscriptions
   has_many :subscribed_announcements, through: :subscriptions, source: :announcement
