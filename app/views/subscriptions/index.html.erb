@@ -1,0 +1,6 @@
+<%= render partial: 'layouts/header_banner', locals: {title: 'Mes inscriptions'} %>
+
+<div class="wrapper userpage">
+  <h2>Les annonces auxquelles vous vous êtes inscrites</h2>
+  <%= render partial: 'announcements/list', locals: { announcements: @announcements } %>
+</div>

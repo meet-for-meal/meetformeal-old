@@ -1,0 +1,7 @@
+<ul>
+  <% @announcements.each do |announcement| %>
+    <li class="result-search">
+      <%= render partial: 'announcements/item', locals: { announcement: announcement } %>
+    </li>
+  <% end %>
+</ul>

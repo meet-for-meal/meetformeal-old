@@ -44,7 +44,17 @@
 
     <h2>Répondre à l'annonce :</h2>
     <p>
-      <a href="#" class="btn"><i class="icon-pencil"></i>Je suis intéressé !</a>
+      <% if @owner == current_user %>
+        Il s'agit de votre propre annonce.
+      <% else %>
+        <% if current_user.subscribed_to? @announcement%>
+          <p>Vous avez répondu à cette annonce.</p>
+        <% else %>
+          <%= link_to announcement_subscriptions_path(@announcement), { method: :post, :class => 'btn' } do %>
+            <i class="icon-check"></i> Je suis intéressé !
+          <% end %>
+        <% end %>
+      <% end %>
     </p>
   </div>
 

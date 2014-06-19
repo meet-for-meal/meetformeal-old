@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
 
   enum gender: [ :male, :female ]
   acts_as_taggable_on :foods, :hobbies
+
+  def subscribe(announcement)
+    subscribed_announcements << announcement
+  end
+
+  def subscribed_to?(announcement)
+    subscribed_announcements.include? announcement
+  end
 end

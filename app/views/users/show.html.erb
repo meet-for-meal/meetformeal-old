@@ -30,7 +30,10 @@
     <p>
       <% if @is_own_profile %>
         <%= link_to edit_user_registration_path, :class => 'btn' do %>
-          <i class="icon-cog icon-plus"></i>Modifier votre profil</a>
+          <i class="icon-cog icon-plus"></i> Modifier votre profil</a>
+        <% end %>
+        <%= link_to subscriptions_path, :class => 'btn' do %>
+          <i class="icon-time"></i> Mes inscriptions</a>
         <% end %>
       <% else %>
         <%= link_to '#', :class => 'btn' do %>

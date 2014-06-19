@@ -1,0 +1,35 @@
+<div class="user-interact">
+  <%= link_to user_announcement_path(announcement.owner, announcement), :class => 'btn see-profile' do %>
+    <i class="icon-eye-open"></i>En savoir plus
+  <% end %>
+  <%= link_to '#', :class => 'btn add-friend' do %>
+    <i class="icon-plus"></i>Inviter à manger
+  <% end %>
+</div>
+<%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 40, height: 40) %>
+<%= link_to announcement.owner do %>
+  <span class="user-title"><%= announcement.owner.name %></span>
+<% end %>
+<div class="user-content">
+  <p class="announce-msg">&laquo; <%= announcement.description %> ... &raquo;<p>
+  <p>
+    <i class="icon-time"></i>Disponibilité :
+    <strong>
+      <%= l announcement.time_from, format: :real_short %>
+    </strong> -
+    <strong>
+      <%= l announcement.time_to, format: :real_short %>
+    </strong>
+    <br>
+    <i class="icon-map-marker"></i>Localisation :
+    <strong>
+      <span class="js-announcement-location" data-location="[<%= announcement.lat %>, <%= announcement.lng %>]">
+        <%= image_tag 'loader.gif' %>
+      </span>
+    </strong>
+    <br>
+    <i class="icon-heart"></i>Centres d'intérêts : <%= tag_list_links(announcement.owner.hobby_list) %>
+    <br>
+    <i class="icon-glass"></i>Préférences culinaires : <%= tag_list_links(announcement.owner.food_list) %>
+  </p>
+</div>

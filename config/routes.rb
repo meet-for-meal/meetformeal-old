@@ -17,15 +17,19 @@ Rails.application.routes.draw do
   # Homepage
   get '/home', to: 'home#index', as: 'homepage'
 
-  # Public user information
   resources :users, only: :show do
     resources :announcements, only: [:index, :show]
   end
 
   # Announcements
-  resources :announcements, only: [:new, :create, :edit, :update, :destroy]
+  resources :announcements, only: [:new, :create, :edit, :update, :destroy] do
+    resources :subscriptions, only: :create
+  end
   get '/announcements/near',   to: 'announcements#near',   as: 'near_announcements'
   get '/announcements/search', to: 'announcements#search', as: 'search_announcements'
+
+  # Subscriptions
+  get '/subscriptions', to: 'subscriptions#index', as: 'subscriptions'
 
   # Restaurants
   get '/restaurants', to: 'restaurants#index', as: 'restaurants'
