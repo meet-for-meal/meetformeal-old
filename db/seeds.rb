@@ -1,3 +1,21 @@
+def create_test_user(i)
+  test_user = User.create name: "#{ENV['TEST_NAME'].dup} ##{i}",
+                          email: "#{i}-#{ENV['TEST_EMAIL'].dup}",
+                          gender: ENV['TEST_GENDER'].dup,
+                          password: ENV['TEST_PASSWORD'].dup,
+                          password_confirmation: ENV['TEST_PASSWORD'].dup
+  puts '    Create USER: ' << test_user.name
+  test_user_foods = 'spanish, british, indian, pakistani'
+  puts "      Add foods [#{test_user_foods}] to user #{test_user.name}"
+  test_user.food_list = test_user_foods
+  test_user.save
+  test_user_hobbies = 'guitare, drum, coding'
+  puts "      Add hobbies [#{test_user_hobbies}] to user #{test_user.name}"
+  test_user.hobby_list = test_user_hobbies
+  test_user.save
+  test_user
+end
+
 def generate_announcement_hash(user, i)
   now = DateTime.now
   {
@@ -25,14 +43,13 @@ end
 
 
 # Users
-puts '  Create default admin USER with admin role'
 admin = User.create name: ENV['ADMIN_NAME'].dup,
                     email: ENV['ADMIN_EMAIL'].dup,
                     gender: ENV['ADMIN_GENDER'].dup,
                     password: ENV['ADMIN_PASSWORD'].dup,
                     password_confirmation: ENV['ADMIN_PASSWORD'].dup
 
-puts '    user: ' << admin.name
+puts "  Create default admin USER '#{admin.name}' with admin role"
 puts "  Add admin role to user #{admin.name}"
 admin.add_role :admin
 admin_foods = 'italian, japanese, indian, pakistani'
@@ -44,29 +61,12 @@ puts "  Add hobbies [#{admin_hobbies}] to user #{admin.name}"
 admin.hobby_list = admin_hobbies
 admin.save
 
-puts '  Create default test USER'
-test_user = User.create name: ENV['TEST_NAME'].dup,
-                        email: ENV['TEST_EMAIL'].dup,
-                        gender: ENV['TEST_GENDER'].dup,
-                        password: ENV['TEST_PASSWORD'].dup,
-                        password_confirmation: ENV['TEST_PASSWORD'].dup
-
-puts '    user: ' << test_user.name
-test_user_foods = 'spanish, british, indian, pakistani'
-puts "  Add foods [#{test_user_foods}] to user #{test_user.name}"
-test_user.food_list = test_user_foods
-test_user.save
-test_user_hobbies = 'guitare, drum, coding'
-puts "  Add hobbies [#{test_user_hobbies}] to user #{test_user.name}"
-test_user.hobby_list = test_user_hobbies
-test_user.save
-
 
 # Announcements
 puts '  Create sample ANNOUNCEMENTS'
 (1..5).each do |i|
-  announcement = Announcement.create generate_announcement_hash(test_user, i)
-  puts "    #{announcement.title}:     [#{announcement.lat}, #{announcement.lng}]"
+  announcement = Announcement.create generate_announcement_hash(create_test_user(i), i)
+  puts "    #{announcement.title}: [#{announcement.lat}, #{announcement.lng}]"
 end
 hash = generate_announcement_hash(admin, 'admin')
 announcement = Announcement.create hash

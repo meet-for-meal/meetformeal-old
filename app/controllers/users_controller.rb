@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @is_own_profile = @user == current_user
+    @are_friends = current_user.is_friend_with?(@user) unless @is_own_profile
     @title = @is_own_profile ? 'Mon profil' : "Profil de #{@user.name}"
   end
 

@@ -1,0 +1,18 @@
+<% if @is_own_profile %>
+  <%= link_to edit_user_registration_path, :class => 'btn' do %>
+    <i class="icon-cog icon-plus"></i> Modifier votre profil</a>
+  <% end %>
+  <%= link_to subscriptions_path, :class => 'btn' do %>
+    <i class="icon-time"></i> Mes inscriptions</a>
+  <% end %>
+<% else %>
+  <% if @are_friends %>
+      <strong>Vous êtes amis.</strong>
+  <% elsif current_user.pending_friends.include?(@user) %>
+    <strong>Demande en attente.</strong>
+  <% else %>
+    <%= link_to user_friendships_path(@user), { method: :post, :class => 'btn' } do %>
+      <i class="icon-envelope icon-plus"></i> Ajouter en ami
+    <% end %>
+  <% end %>
+<% end %>

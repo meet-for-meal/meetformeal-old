@@ -28,18 +28,7 @@
       <i class="icon-eye-open"></i>Profil complété à <strong>90%</strong>
     </p>
     <p>
-      <% if @is_own_profile %>
-        <%= link_to edit_user_registration_path, :class => 'btn' do %>
-          <i class="icon-cog icon-plus"></i> Modifier votre profil</a>
-        <% end %>
-        <%= link_to subscriptions_path, :class => 'btn' do %>
-          <i class="icon-time"></i> Mes inscriptions</a>
-        <% end %>
-      <% else %>
-        <%= link_to '#', :class => 'btn' do %>
-          <i class="icon-envelope icon-plus"></i>Ajouter en ami</a>
-        <% end %>
-      <% end %>
+      <%= render partial: 'friendships/add_friend_button' %>
     </p>
   </div>
 
@@ -59,7 +48,7 @@
     <hr>
     <% end %>
 
-    <h2>Mes amis</h2>
+    <h2><%= @is_own_profile ? 'Mes amis' : 'Amis' %></h2>
 
     <a href="userpage.html" title="Pierre">
       <%= image_tag('users/pierre.jpg', :class => 'avatar', width: 64, height: 64) %>

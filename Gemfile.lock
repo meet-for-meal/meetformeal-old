@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rhannequin/acts_as_friendable.git
-  revision: e40f744cd4583b4a44857f325aa9f98a7e24ea29
+  revision: 74edb12c188a050c9e06e3776551e87f9be1c1d9
   specs:
     acts_as_friendable (1.0.1)
       rails

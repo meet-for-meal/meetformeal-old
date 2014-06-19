@@ -21,4 +21,12 @@ class User < ActiveRecord::Base
   def subscribed_to?(announcement)
     subscribed_announcements.include? announcement
   end
+
+  def request_friendship(user)
+    User::Friendship.create user_id: self.id, friend_id: user.id
+  end
+
+  def is_friend_with?(user)
+    friends.include? user
+  end
 end
