@@ -10,6 +10,8 @@
       <strong>Vous êtes amis.</strong>
   <% elsif current_user.pending_friends.include?(@user) %>
     <strong>Demande en attente.</strong>
+  <% elsif current_user.requested_friendships.include?(@user) %>
+    <strong>Vous a demandé en ami.</strong>
   <% else %>
     <%= link_to user_friendships_path(@user), { method: :post, :class => 'btn' } do %>
       <i class="icon-envelope icon-plus"></i> Ajouter en ami

@@ -34,28 +34,39 @@
 
   <div class="col-1">
     <% if @is_own_profile %>
-    <h2>Nouvelles demandes d'ajout</h2>
-
-    <div class="user">
-      <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
-      <p>
-        <a href="userpage.html" class="black"><strong>Alexandra Martin</strong></a><br>
-        <a href="#">#communication</a> <a href="#">#musique</a> <a href="#">#badminton</a><br>
-        <a href="#" class="btn"><i class="icon-ok"></i>Accepter</a> <a href="#" class="btn btn-neutral"><i class="icon-remove"></i>Ignorer</a>
-      </p>
-    </div>
-
-    <hr>
+      <h2>Nouvelles demandes d'ajout</h2>
+      <% @user.requested_friendships.each do |user| %>
+        <div class="user">
+          <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+          <p>
+            <%= link_to user_path(user), :class => 'black' do %>
+              <strong><%= user.name %></strong>
+            <% end %>
+            <br>
+            <%= tag_list_links(user.food_list, ' ') %>
+            <br>
+            <%= link_to '#', :class => 'btn' do %>
+              <i class="icon-ok"></i> Accepter
+            <% end %>
+            <%= link_to '#', :class => 'btn btn-neutral' do %>
+              <i class="icon-remove"></i> Ignorer
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+      <hr>
     <% end %>
 
     <h2><%= @is_own_profile ? 'Mes amis' : 'Amis' %></h2>
-
-    <a href="userpage.html" title="Pierre">
-      <%= image_tag('users/pierre.jpg', :class => 'avatar', width: 64, height: 64) %>
-    </a>
-    <a href="userpage.html" title="Romain">
-      <%= image_tag('users/romain.jpg', :class => 'avatar', width: 64, height: 64) %>
-    </a>
+    <% if @user.friends.any? %>
+      <% @user.friends.each do |friend| %>
+        <%= link_to user_path(friend), title: friend.name do %>
+          <%= image_tag('users/pierre.jpg', :class => 'avatar', width: 64, height: 64) %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>Aucun ami pour le moment.</p>
+    <% end %>
   </div>
 
 </div>
