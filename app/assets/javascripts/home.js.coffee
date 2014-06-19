@@ -3,7 +3,6 @@ class User
 
 
 MFM = window.MFM || {}
-currentUser = MFM.currentUser = new User 'rhannequin', 48.8567, 2.3508
 
 
 $(document).ready ->
@@ -11,14 +10,22 @@ $(document).ready ->
   mapName = 'mainMap'
 
   initMap = ->
-    currentUser = MFM.currentUser
-    MFM.setMap 'googlemaps', mapName, currentUser.lat, currentUser.lng, 13, yes
+    geo = navigator.geolocation
+    if geo?
+      geo.getCurrentPosition (position) ->
+        coords = position.coords
+        lat = coords.latitude
+        lng = coords.longitude
+        MFM.setMap 'googlemaps', mapName, lat, lng, 13, yes
+        initMarkers lat, lng
+        getNearAnnouncements lat, lng
 
-  initMarkers = (users) ->
-    currentUser = MFM.currentUser
+  initMarkers = (lat, lng) ->
     venuesParams =
       categoryId: '4d4b7105d754a06374d81259'
-      ll: "#{currentUser.lat},#{currentUser.lng}"
+      ll: "#{lat},#{lng}"
+      intent: 'browse'
+      radius: 5000
     MFM.FoursquareApi.req '/venues/search', venuesParams, (data) ->
       data.response.venues.forEach (venue) ->
         location = venue.location
@@ -41,8 +48,8 @@ $(document).ready ->
       timeout: 3000
       pager:  '#nav'
 
-  getNearAnnouncements = ->
-    req = MFM.apiRequest "/announcements/near?lat=#{currentUser.lat}&lng=#{currentUser.lng}"
+  getNearAnnouncements = (lat, lng) ->
+    req = MFM.apiRequest "/announcements/near?lat=#{lat}&lng=#{lng}"
     req.done (announcements) ->
       for announcement in announcements
         title = announcement.title
@@ -53,6 +60,4 @@ $(document).ready ->
 
 
   initMap()
-  initMarkers()
-  getNearAnnouncements()
   initSlider()
