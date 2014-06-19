@@ -7,7 +7,7 @@ def generate_announcement_hash(user, i)
     time_to: now + 4.hours,
     lat: rand(48.8...48.9).round(5), # Near center of Paris
     lng: rand(2.3...2.4).round(5),
-    user: user
+    owner: user
   }
 end
 

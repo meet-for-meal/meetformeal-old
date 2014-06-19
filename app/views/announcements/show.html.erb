@@ -26,12 +26,12 @@
     <div id="announcement-user">
       <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
       <p>
-        Proposé par <strong><%= @user.name %></strong><br>
-        <i class="icon-heart"></i>Centres d'intérêts  : <%= tag_list_links(@user.hobby_list) %><br>
-        <i class="icon-glass"></i>Préférences culinaires : <%= tag_list_links(@user.food_list) %><br>
+        Proposé par <strong><%= @owner.name %></strong><br>
+        <i class="icon-heart"></i>Centres d'intérêts  : <%= tag_list_links(@owner.hobby_list) %><br>
+        <i class="icon-glass"></i>Préférences culinaires : <%= tag_list_links(@owner.food_list) %><br>
       </p>
       <p>
-        <%= link_to user_path(@user), :class => 'btn' do %>
+        <%= link_to user_path(@owner), :class => 'btn' do %>
           <i class="icon-eye-open icon-red"></i> Voir son profil
         <% end %>
       </p>

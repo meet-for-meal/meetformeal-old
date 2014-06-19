@@ -10,13 +10,13 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/search
   def search
-    @announcements = Announcement.all.includes(user: [:foods, :hobbies]).limit(5)
+    @announcements = Announcement.all.includes(owner: [:foods, :hobbies]).limit(5)
   end
 
   # GET /announcements/1
   # GET /announcements/1.json
   def show
-    @user = @announcement.user
+    @owner = @announcement.owner
   end
 
   # GET /announcements/new
@@ -35,7 +35,7 @@ class AnnouncementsController < ApplicationController
   # POST /announcements.json
   def create
     @announcement = Announcement.new(announcement_params)
-    @announcement.user = current_user
+    @announcement.owner = current_user
 
     respond_to do |format|
       if @announcement.save
@@ -82,7 +82,7 @@ class AnnouncementsController < ApplicationController
     render json: Announcement
                   .near(current_user.id, permitted['lat'], permitted['lng'])
                   .to_json({
-                    :include => [{ user: { only: [:name] } }],
+                    :include => [{ owner: { only: [:name] } }],
                     :only    => [:id, :title, :lat, :lng]
                   })
   end

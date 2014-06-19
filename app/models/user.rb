@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   # include Amistad::FriendModel
 
-  has_many :announcements, dependent: :destroy
+  has_many :subscriptions
+  has_many :subscribed_announcements, through: :subscriptions, source: :announcement
+  has_many :created_announcements, class_name: 'Announcement', foreign_key: 'user_id'
 
   rolify
   # Include default devise modules. Others available are:

@@ -6,7 +6,9 @@ class Announcement < ActiveRecord::Base
                     # lat_column_name: :lat,
                     # lng_column_name: :lng
 
-  belongs_to :user
+  has_many :subscriptions
+  has_many :subscribers, through: :subscriptions, source: :user
+  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
 
   validates :title, presence: true
   validates :description, presence: true

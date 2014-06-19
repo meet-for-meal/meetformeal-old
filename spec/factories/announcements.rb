@@ -6,6 +6,6 @@ FactoryGirl.define do
   end
 
   factory :announcement_with_user, parent: :announcement do
-    after(:create) { |announcement| announcement.user = create(:user) }
+    after(:create) { |announcement| announcement.owner = create(:user) }
   end
 end

@@ -60,7 +60,7 @@ describe Announcement do
         lat: -48.876667, # Most isolated place on earth
         lng: -123.393333 # resides inside Pacific ocean
       })
-      near = Announcement.near(announcement.user.id, announcement.lat, announcement.lng)
+      near = Announcement.near(announcement.owner.id, announcement.lat, announcement.lng)
       expect(near).to include(close_announcement)
       expect(near).not_to include(far_announcement)
     end

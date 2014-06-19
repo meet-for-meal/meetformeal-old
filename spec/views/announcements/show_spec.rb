@@ -6,7 +6,7 @@ describe 'announcements/show' do
   it 'displays the user name' do
     assign(:announcement, announcement)
     render
-    expect(rendered).to include(announcement.user.name)
+    expect(rendered).to include(announcement.owner.name)
   end
 
   it "displays the announcement's title" do
