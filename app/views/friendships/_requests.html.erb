@@ -1,0 +1,23 @@
+<% if @user.requested_friendships.any? %>
+  <% @user.requested_friendships.each do |user| %>
+    <div class="user">
+      <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+      <p>
+        <%= link_to user_path(user), :class => 'black' do %>
+          <strong><%= user.name %></strong>
+        <% end %>
+        <br>
+        <%= tag_list_links(user.food_list, ' ') %>
+        <br>
+        <%= link_to '#', :class => 'btn' do %>
+          <i class="icon-ok"></i> Accepter
+        <% end %>
+        <%= link_to '#', :class => 'btn btn-neutral' do %>
+          <i class="icon-remove"></i> Ignorer
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+<% else %>
+  <p>Pas de nouvelle demande.</p>
+<% end %>

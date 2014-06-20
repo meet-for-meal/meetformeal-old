@@ -1,7 +1,11 @@
-<ul>
-  <% @announcements.each do |announcement| %>
-    <li class="result-search">
-      <%= render partial: 'announcements/item', locals: { announcement: announcement } %>
-    </li>
-  <% end %>
-</ul>
+<% if @announcements.any? %>
+  <ul>
+    <% @announcements.each do |announcement| %>
+      <li class="result-search">
+        <%= render partial: 'announcements/item', locals: { announcement: announcement } %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Pas d'inscription pour le moment.</p>
+<% end %>
