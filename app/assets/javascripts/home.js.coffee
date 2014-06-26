@@ -1,3 +1,13 @@
+Handlebars.registerHelper 'customDate', (dateStr) ->
+  date = new Date dateStr
+  hours = date.getHours()
+  hours = "0#{hours}" if hours < 10
+  "#{hours}H"
+
+Handlebars.registerHelper 'joinHobbies', (hobbies) ->
+  hobbies.forEach (hobby, i) -> hobbies[i] = "##{hobby}"
+  hobbies.join(', ')
+
 class User
   constructor: (@name, @lat, @lng) ->
 
@@ -51,12 +61,24 @@ $(document).ready ->
   getNearAnnouncements = (lat, lng) ->
     req = MFM.apiRequest "/announcements/near?lat=#{lat}&lng=#{lng}"
     req.done (announcements) ->
-      for announcement in announcements
-        title = announcement.title
-        markerOpt =
-          icon: MFM.customMarker('55B53D')
-          title: title
-        MFM.addMarker title, mapName, announcement.lat, announcement.lng, markerOpt
+      userIds = []
+      $.each announcements, (i, announcement) -> userIds.push(announcement.owner.id)
+      MFM.apiRequest("/users?users=#{getInvolvedUsers(userIds).join(',')}").done (users) ->
+        formattedUsers = {}
+        $.each users, (i, user) -> formattedUsers[user.id] = user
+        templateParams = []
+        $.each announcements, (i, announcement) ->
+          title = announcement.title
+          markerOpt = icon: MFM.customMarker('55B53D'), title: title
+          MFM.addMarker title, mapName, announcement.lat, announcement.lng, markerOpt
+          templateParams.push announcement: announcement, owner: formattedUsers[announcement.owner.id]
+        template = HandlebarsTemplates['users/near_list']
+        $('.js-near_users').html template(announcements: templateParams)
+
+  getInvolvedUsers = (userIds) ->
+    uniqueIds = []
+    $.each userIds, (i, id) ->
+      uniqueIds.push(id) if $.inArray(id, uniqueIds) is -1
 
 
   initMap()

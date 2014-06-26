@@ -75,15 +75,17 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/near
   def near
-    permitted = params.permit(:lat, :lng)
+    permitted = params.permit(:lat, :lng, :limit)
     unless permitted.has_key?('lat') && permitted.has_key?('lng')
       return render json: { error: "You must provide 'lat' and 'lng' parameters", status: 400 }
     end
+    limit = permitted[:limit].nil? ? 5 : permitted[:limit]
     render json: Announcement
                   .near(current_user.id, permitted['lat'], permitted['lng'])
+                  .limit(limit)
                   .to_json({
-                    :include => [{ owner: { only: [:name] } }],
-                    :only    => [:id, :title, :lat, :lng]
+                    :include => [{ owner: { only: [:id, :name] } }],
+                    :only    => [:id, :title, :lat, :lng, :time_from, :time_to]
                   })
   end
 

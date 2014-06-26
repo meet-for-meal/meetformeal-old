@@ -2,6 +2,14 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show]
 
+  def index
+    permitted = params.permit(:users)
+    @users = permitted.has_key?('users') ? User.find(permitted['users'].split(',')) : User.all
+    respond_to do |format|
+      format.json { render :index }
+    end
+  end
+
   def show
     @is_own_profile = @user == current_user
     @are_friends = current_user.is_friend_with?(@user) unless @is_own_profile

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # Homepage
   get '/home', to: 'home#index', as: 'homepage'
 
-  resources :users, only: :show do
+  resources :users, only: [:index, :show] do
     resources :announcements, only: [:index, :show]
     resources :friendships, only: :create
   end
