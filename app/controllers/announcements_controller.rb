@@ -10,7 +10,36 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/search
   def search
-    @announcements = Announcement.all.includes(owner: [:foods, :hobbies]).limit(5)
+    permitted_params = params.permit(:time_from, :time_to, :interests)
+    filter = {}
+    now = DateTime.now
+    zone = now.zone.to_i.hours
+
+    # time_from filter
+    if permitted_params.has_key?(:time_from) && !permitted_params[:time_from].empty?
+      time_from = permitted_params[:time_from].to_i
+      range = (now.change(hour: time_from) - 1.hours + zone)..(now.change(hour: time_from) + 1.hour + zone)
+      filter[:time_from] = range
+    end
+
+    # time_to filter
+    if permitted_params.has_key?(:time_to) && !permitted_params[:time_to].empty?
+      time_to = permitted_params[:time_to].to_i
+      range = (now.change(hour: time_to) - 1.hours + zone)..(now.change(hour: time_to) + 1.hour + zone)
+      filter[:time_to] = range
+    end
+
+    # Retreiving
+    @announcements = (filter.keys.size > 0 ? Announcement.where(filter) : Announcement.all)
+                      .includes(owner: [:foods, :hobbies]).limit(5)
+
+    # Interets filter
+    if permitted_params.has_key?(:interests) && !permitted_params[:interests].empty?
+      @announcements.to_a.select! do |announcement|
+        announcement.owner.hobby_list.include?(permitted_params[:interests]) ||
+        announcement.owner.food_list.include?(permitted_params[:interests])
+      end
+    end
   end
 
   # GET /announcements/1

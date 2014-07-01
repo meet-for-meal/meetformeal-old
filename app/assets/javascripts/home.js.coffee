@@ -1,5 +1,6 @@
 Handlebars.registerHelper 'customDate', (dateStr) ->
   date = new Date dateStr
+  date = new Date(date.getTime() + date.getTimezoneOffset()*60000)
   hours = date.getHours()
   hours = "0#{hours}" if hours < 10
   "#{hours}H"

@@ -44,11 +44,13 @@ end
 
 def generate_announcement_hash(user, i)
   now = DateTime.now
+  duration = 2.hours
+  from = now + (0..480).to_a.sample.minutes
   {
-    title: "Test announcement ##{i}",
-    description: "Hello, I'm #{user.name} and this is the announcement ##{i}",
-    time_from: now + 2.hours,
-    time_to: now + 4.hours,
+    title: "Annonce Test ##{i}",
+    description: "Salut, je suis #{user.name} et voici l'annonce ##{i}",
+    time_from: from,
+    time_to: from + duration,
     lat: rand(48.8...48.9).round(5), # Near center of Paris
     lng: rand(2.3...2.4).round(5),
     owner: user
@@ -92,7 +94,7 @@ admin.save
 puts '  Create sample ANNOUNCEMENTS'
 (1..5).each do |i|
   announcement = Announcement.create generate_announcement_hash(create_test_user(i), i)
-  puts "    #{announcement.title}: [#{announcement.lat}, #{announcement.lng}]"
+  puts "    #{announcement.title}: [#{announcement.lat}, #{announcement.lng}] at #{announcement.time_from.hour}:#{announcement.time_from.minute}"
 end
 hash = generate_announcement_hash(admin, 'admin')
 announcement = Announcement.create hash
