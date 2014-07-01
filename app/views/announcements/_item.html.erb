@@ -6,7 +6,7 @@
     <i class="icon-plus"></i>Inviter à manger
   <% end %>
 </div>
-<%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 40, height: 40) %>
+<%= image_tag(fake_pp_url(announcement.owner), :class => 'avatar', width: 40, height: 40) %>
 <%= link_to announcement.owner do %>
   <span class="user-title"><%= announcement.owner.name %></span>
 <% end %>

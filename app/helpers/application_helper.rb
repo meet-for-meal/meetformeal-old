@@ -16,4 +16,14 @@ module ApplicationHelper
     'class="current"'.html_safe if request.original_url == compared_url
   end
 
+
+  # Temporary
+
+  def fake_pp_url(user)
+    return 'users/remy.jpg' if user.email == 'm@rhannequin.com'
+    i = user.email.split('-').first
+    g = user.gender[0,1]
+    "users/#{i}-#{g}.jpg"
+  end
+
 end

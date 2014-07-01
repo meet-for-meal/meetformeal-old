@@ -32,6 +32,15 @@ $(document).ready ->
     if currentUser?
       initVenues currentUser.lat, currentUser.lng
 
+  checkAll = (e) ->
+    e.preventDefault()
+    check = $(this).hasClass('check-all')
+    $inputs = $('.categories').find('input:checkbox')
+    $inputs.prop 'checked', check
+
+  $('.check-all').on 'click', checkAll
+  $('.uncheck-all').on 'click', checkAll
+
 
   initPosition = ->
     geo = navigator.geolocation

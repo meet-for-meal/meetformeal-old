@@ -1,3 +1,16 @@
+@random_users = [
+  {name: 'Jean Martin', gender: 'male'},
+  {name: 'Pierre Bernard', gender: 'male'},
+  {name: 'Paul Dubois', gender: 'male'},
+  {name: 'Jacques Richard', gender: 'male'},
+  {name: 'Robert Petit', gender: 'male'},
+  {name: 'Jeanne Durand', gender: 'female'},
+  {name: 'Marie Moreau', gender: 'female'},
+  {name: 'Catherine Simon', gender: 'female'},
+  {name: 'Nicole Laurent', gender: 'female'},
+  {name: 'Françoise Lefebvre', gender: 'female'}
+]
+
 def random_hobbies
   hobbies = %w{ soccer handball drinking movie tennis guitare drum coding dancing rugby dj }
   "#{hobbies.sample}, #{hobbies.sample}, #{hobbies.sample}, #{hobbies.sample}"
@@ -9,9 +22,12 @@ def random_foods
 end
 
 def create_test_user(i)
-  test_user = User.create name: "#{ENV['TEST_NAME'].dup} ##{i}",
+  random_i = (0...@random_users.size).to_a.sample
+  random_user = @random_users[random_i]
+  @random_users.delete(random_i)
+  test_user = User.create name: random_user[:name],
                           email: "#{i}-#{ENV['TEST_EMAIL'].dup}",
-                          gender: ENV['TEST_GENDER'].dup,
+                          gender: random_user[:gender],
                           password: ENV['TEST_PASSWORD'].dup,
                           password_confirmation: ENV['TEST_PASSWORD'].dup
   puts '    Create USER: ' << test_user.name

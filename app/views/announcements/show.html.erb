@@ -24,7 +24,7 @@
     </div>
 
     <div id="announcement-user">
-      <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+      <%= image_tag(fake_pp_url(@owner), :class => 'avatar', width: 64, height: 64) %>
       <p>
         Proposé par <strong><%= @owner.name %></strong><br>
         <i class="icon-heart"></i>Centres d'intérêts  : <%= tag_list_links(@owner.hobby_list) %><br>

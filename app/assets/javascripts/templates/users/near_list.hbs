@@ -2,7 +2,7 @@
 {{#each announcements}}
   <li class="user">
     <a href="/users/{{ owner.id }}/announcements/{{ announcement.id }}">
-      <img src="/assets/users/alexandra.jpg" width="40" height="40" class="avatar" alt="">
+      <img src="{{ fakePpUrl owner }}" width="40" height="40" class="avatar" alt="">
       <span class="user-title">{{ owner.name }}</span>
       <span class="user-time">{{ customDate announcement.time_from }} - {{ customDate announcement.time_to }}</span>
       <span class="user-tags">{{ joinHobbies owner.hobbies }}</span>

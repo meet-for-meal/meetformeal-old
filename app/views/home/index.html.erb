@@ -37,7 +37,7 @@
       <% end %>
     </div>
     <div id="current-user" class="col-1">
-      <img src="/assets/users/herve.jpg" width="64" height="64" class="avatar" alt="">
+      <%= image_tag(fake_pp_url(current_user), :class => 'avatar', width: 64, height: 64) %>
       <h3>
         <%= link_to current_user.name, user_path(current_user), :class => 'black' %>
       </h3>

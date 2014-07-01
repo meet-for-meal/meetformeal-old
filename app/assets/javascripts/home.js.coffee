@@ -8,6 +8,14 @@ Handlebars.registerHelper 'joinHobbies', (hobbies) ->
   hobbies.forEach (hobby, i) -> hobbies[i] = "##{hobby}"
   hobbies.join(', ')
 
+# Temporary
+
+Handlebars.registerHelper 'fakePpUrl', (owner) ->
+  return '/assets/users/remy.jpg' if owner.email == 'm@rhannequin.com'
+  i = owner.email.split('-')[0]
+  g = owner.gender.charAt(0)
+  "/assets/users/#{i}-#{g}.jpg"
+
 class User
   constructor: (@name, @lat, @lng) ->
 

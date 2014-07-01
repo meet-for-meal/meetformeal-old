@@ -1,7 +1,7 @@
 <% if @requested_friendships.any? %>
   <% @requested_friendships.each do |user| %>
     <div class="user">
-      <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
+      <%= image_tag(fake_pp_url(user), :class => 'avatar', width: 64, height: 64) %>
       <p>
         <%= link_to user_path(user), :class => 'black' do %>
           <strong><%= user.name %></strong>

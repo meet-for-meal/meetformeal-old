@@ -4,7 +4,7 @@
 
   <div class="col-2">
     <h2>Informations sur <%= @is_own_profile ? 'votre profil' : "l'utilisateur" %></h2>
-    <%= image_tag('users/herve.jpg', :class => 'avatar', width: 64, height: 64) %>
+    <%= image_tag(fake_pp_url(@user), :class => 'avatar', width: 64, height: 64) %>
     <p>
       <i class="icon-user"></i><strong><%= @user.name %></strong>
     </p>
@@ -43,7 +43,7 @@
     <% if @user.friends.any? %>
       <% @user.friends.each do |friend| %>
         <%= link_to user_path(friend), title: friend.name do %>
-          <%= image_tag('users/pierre.jpg', :class => 'avatar', width: 64, height: 64) %>
+          <%= image_tag(fake_pp_url(friend), :class => 'avatar', width: 64, height: 64) %>
         <% end %>
       <% end %>
     <% else %>
