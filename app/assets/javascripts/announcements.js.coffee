@@ -33,3 +33,13 @@ $(document).ready ->
         else
           text = "Impossible de déterminer l'emplacement"
         $el.html(text)
+
+
+  # Announcements#new actions
+  if $('body').hasClass('announcements-new')
+    geo = navigator.geolocation
+    if geo? # TODO: what if false?
+      geo.getCurrentPosition (position) ->
+        coords = position.coords
+        $("input[name$='announcement[lat]']").val coords.latitude
+        $("input[name$='announcement[lng]']").val coords.longitude

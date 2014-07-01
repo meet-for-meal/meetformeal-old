@@ -22,9 +22,6 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/new
   def new
     @announcement = Announcement.new
-    # Generate random location near center of Paris
-    @announcement.lat = rand(48.8...48.9).round(5)
-    @announcement.lng = rand(2.3...2.4).round(5)
   end
 
   # GET /announcements/1/edit

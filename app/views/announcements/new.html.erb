@@ -24,8 +24,8 @@
           <!-- <textarea id="announcement_description" cols="30" rows="10" name="announcement_description"></textarea> -->
         </p>
         <p>
-          <input type="hidden" name="announcement[lat]" value="<%= rand(48.8...48.9).round(5) %>">
-          <input type="hidden" name="announcement[lng]" value="<%= rand(2.3...2.4).round(5) %>">
+          <input type="hidden" name="announcement[lat]">
+          <input type="hidden" name="announcement[lng]">
           <%= f.button :submit, "Créer l'annonce", html: { :class => 'btn' } %>
         </p>
       <% end %>
