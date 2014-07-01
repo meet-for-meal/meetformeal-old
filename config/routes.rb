@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     resources :announcements, only: [:index, :show]
-    resources :friendships, only: :create
+    resources :friendships, only: [:create, :update]
   end
 
   # Announcements

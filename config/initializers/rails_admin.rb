@@ -33,4 +33,10 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'User' do
+    configure :gender, :enum do
+      read_only true
+    end
+  end
 end

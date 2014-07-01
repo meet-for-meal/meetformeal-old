@@ -1,3 +1,13 @@
+def random_hobbies
+  hobbies = %w{ soccer handball drinking movie tennis guitare drum coding dancing rugby dj }
+  "#{hobbies.sample}, #{hobbies.sample}, #{hobbies.sample}, #{hobbies.sample}"
+end
+
+def random_foods
+  foods = %w{ burgers chinois français indien japonais coréen pizza sandwitch sushis tapas thaïlandais turc grec végétarien }
+  "#{foods.sample}, #{foods.sample}, #{foods.sample}, #{foods.sample}"
+end
+
 def create_test_user(i)
   test_user = User.create name: "#{ENV['TEST_NAME'].dup} ##{i}",
                           email: "#{i}-#{ENV['TEST_EMAIL'].dup}",
@@ -5,11 +15,11 @@ def create_test_user(i)
                           password: ENV['TEST_PASSWORD'].dup,
                           password_confirmation: ENV['TEST_PASSWORD'].dup
   puts '    Create USER: ' << test_user.name
-  test_user_foods = 'spanish, british, indian, pakistani'
+  test_user_foods = random_foods
   puts "      Add foods [#{test_user_foods}] to user #{test_user.name}"
   test_user.food_list = test_user_foods
   test_user.save
-  test_user_hobbies = 'guitare, drum, coding'
+  test_user_hobbies = random_hobbies
   puts "      Add hobbies [#{test_user_hobbies}] to user #{test_user.name}"
   test_user.hobby_list = test_user_hobbies
   test_user.save
@@ -52,11 +62,11 @@ admin = User.create name: ENV['ADMIN_NAME'].dup,
 puts "  Create default admin USER '#{admin.name}' with admin role"
 puts "  Add admin role to user #{admin.name}"
 admin.add_role :admin
-admin_foods = 'italian, japanese, indian, pakistani'
+admin_foods = random_foods
 puts "  Add foods [#{admin_foods}] to user #{admin.name}"
 admin.food_list = admin_foods
 admin.save
-admin_hobbies = 'soccer, coding, handball'
+admin_hobbies = random_hobbies
 puts "  Add hobbies [#{admin_hobbies}] to user #{admin.name}"
 admin.hobby_list = admin_hobbies
 admin.save

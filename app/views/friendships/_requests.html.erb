@@ -1,5 +1,5 @@
-<% if @user.requested_friendships.any? %>
-  <% @user.requested_friendships.each do |user| %>
+<% if @requested_friendships.any? %>
+  <% @requested_friendships.each do |user| %>
     <div class="user">
       <%= image_tag('users/alexandra.jpg', :class => 'avatar', width: 64, height: 64) %>
       <p>
@@ -9,12 +9,22 @@
         <br>
         <%= tag_list_links(user.food_list, ' ') %>
         <br>
-        <%= link_to '#', :class => 'btn' do %>
-          <i class="icon-ok"></i> Accepter
+
+
+        <% @inverse_friendships.each do |inverse_friendship| %>
+          <% if inverse_friendship.user_id == user.id && inverse_friendship.friend_id == @user.id %>
+            <%= link_to user_friendship_path(user_id: user.id, friendship_id: inverse_friendship.id, approved: true), :class => 'btn', method: :patch do %>
+              <i class="icon-ok"></i> Accepter
+            <% end %>
+
+            <%= link_to user_friendship_path(user_id: user.id, friendship_id: inverse_friendship.id, approved: false), :class => 'btn btn-neutral', method: :patch do %>
+              <i class="icon-remove"></i> Ignorer
+            <% end %>
+          <% end %>
         <% end %>
-        <%= link_to '#', :class => 'btn btn-neutral' do %>
-          <i class="icon-remove"></i> Ignorer
-        <% end %>
+
+
+
       </p>
     </div>
   <% end %>

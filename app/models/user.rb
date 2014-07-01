@@ -29,4 +29,14 @@ class User < ActiveRecord::Base
   def is_friend_with?(user)
     friends.include? user
   end
+
+  def self.anwser_friend_request(friendship_id, accept)
+    friendship = User::Friendship.find(friendship_id)
+    if accept
+      friendship.approved = accept
+      friendship.save
+    else
+      friendship.destroy
+    end
+  end
 end

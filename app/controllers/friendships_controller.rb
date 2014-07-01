@@ -1,10 +1,16 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_requested_user, only: :create
+  before_action :set_requested_user, only: [:create, :update]
 
   def create
-    redirect_to(homepage_path) if is_current_user? || is_already_friend? || is_pending_friend?
+    return redirect_to(homepage_path) if is_current_user? || is_already_friend? || is_pending_friend?
     current_user.request_friendship @requested_user
+    redirect_to user_path @requested_user
+  end
+
+  def update
+    return redirect_to(homepage_path) if is_current_user? || is_already_friend? || !is_pending_friend?
+    User.anwser_friend_request(params[:friendship_id].to_i, params[:approved] == 'true')
     redirect_to user_path @requested_user
   end
 

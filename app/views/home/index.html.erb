@@ -21,17 +21,20 @@
   <div class="col-container">
     <div class="col-2">
       <h2>Recherche avancée</h2>
-      <form id="user-search-form" action="announcementsearch.html">
+      <%= form_tag(search_announcements_path, method: 'GET', id: 'user-search-form') do %>
         <p>
           <label for="time-start"><strong><i class="icon-time"></i> Quand ? </strong></label>
-          De <input type="text" id="time-start"> à <input type="text" id="time-end" >
-          <input type="submit" class="btn" value="Trouver">
+          De
+          <%= text_field_tag(:time_from) %>
+          à
+          <%= text_field_tag(:time_to) %>
+          <%= submit_tag('Trouver', :class => 'btn') %>
         </p>
         <p>
           <label for="interests"><strong><i class="icon-heart"></i> Goûts / Intérêts</strong></label>
-          <input type="text" id="interests">
+          <%= text_field_tag(:interests) %>
         </p>
-      </form>
+      <% end %>
     </div>
     <div id="current-user" class="col-1">
       <img src="/assets/users/herve.jpg" width="64" height="64" class="avatar" alt="">
@@ -41,7 +44,11 @@
       <span class="user-tags">
         <%= tag_list_links(current_user.hobby_list, ' ') %>
       </span>
-      <span><a href="announcementcreate.html" class="btn"><i class="icon-pencil"></i> Poster une annonce</a></span>
+      <span>
+        <%= link_to new_announcement_path, :class => 'btn' do %>
+          <i class="icon-pencil"></i> Poster une annonce
+        <% end %>
+      </span>
     </div>
   </div>
 

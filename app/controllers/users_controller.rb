@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     @is_own_profile = @user == current_user
     @are_friends = current_user.is_friend_with?(@user) unless @is_own_profile
     @title = @is_own_profile ? 'Mon profil' : "Profil de #{@user.name}"
+    @inverse_friendships = @user.inverse_friendships
+    @requested_friendships = @user.requested_friendships
   end
 
   private
