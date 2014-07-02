@@ -16,7 +16,7 @@
       <% message = receipt.message %>
       <% from = @participants[message.sender_id] %>
       <div class="single-msg">
-        <%= image_tag(fake_pp_url(from), :class => 'avatar', width: 40, height: 40) %>
+        <%= image_tag(fake_pp_url(from), :class => 'avatar', width: 40, height: 40, alt: '') %>
         <p class="author-msg">
           <%= link_to user_path(from) do %>
             <%= from.name %>

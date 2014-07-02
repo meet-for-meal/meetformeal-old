@@ -5,7 +5,7 @@
       <% participant = conversation.participants.reject { |p| p == current_user }.first %>
       <% last_message = conversation.last_message %>
       <li class="conversation current">
-        <%= image_tag(fake_pp_url(participant), :class => 'avatar', width: 40, height: 40) %>
+        <%= image_tag(fake_pp_url(participant), :class => 'avatar', width: 40, height: 40, alt: '') %>
         <p class="name-conversation">
           <%= link_to user_path(participant) do %>
             <%= participant.name %>

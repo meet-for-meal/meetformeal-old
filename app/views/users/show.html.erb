@@ -44,7 +44,7 @@
     <% if @user.friends.any? %>
       <% @user.friends.each do |friend| %>
         <%= link_to user_path(friend), title: friend.name do %>
-          <%= image_tag(fake_pp_url(friend), :class => 'avatar', width: 64, height: 64) %>
+          <%= image_tag(fake_pp_url(friend), :class => 'avatar', width: 64, height: 64, alt: '') %>
         <% end %>
       <% end %>
     <% else %>
