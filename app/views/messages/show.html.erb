@@ -1,0 +1,40 @@
+<%= render partial: 'layouts/header_banner', locals: { title: @title } %>
+
+<div class="wrapper">
+
+  <div class="col-2">
+
+    <h2><%= @title %></h2>
+
+    <p>
+      <%= link_to edit_message_path(@conversation), :class => 'btn' do %>
+        Répondre
+      <% end %>
+    </p>
+
+    <% @receipts.each do |receipt| %>
+      <% message = receipt.message %>
+      <% from = @participants[message.sender_id] %>
+      <div class="single-msg">
+        <%= image_tag(fake_pp_url(from), :class => 'avatar', width: 40, height: 40) %>
+        <p class="author-msg">
+          <%= link_to user_path(from) do %>
+            <%= from.name %>
+          <% end %>
+        </p>
+        <p class="message-date"><%= l message.updated_at, format: :short %></p>
+        <div class="content-msg">
+          <%= message.body %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="col-1">
+
+    <%= render partial: 'conversation_list' %>
+
+  </div>
+
+</div>

@@ -10,6 +10,7 @@ Rails.application.config.assets.precompile += [
   'restaurants.css',
   'subscriptions.js',
   'subscriptions.css',
+  'messages.css',
   'sessions.css',
   'jquery.cycle.all.js'
 ]

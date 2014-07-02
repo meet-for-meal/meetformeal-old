@@ -13,6 +13,12 @@ class User < ActiveRecord::Base
 
   enum gender: [ :male, :female ]
   acts_as_taggable_on :foods, :hobbies
+  acts_as_messageable
+
+  def mailboxer_email(object)
+    user
+    # User.first.send_message(User.find(2), 'subject', 'message')
+  end
 
   def subscribe(announcement)
     subscribed_announcements << announcement

@@ -20,10 +20,10 @@
         <i class="icon-user"></i><%= current_user.name %>
       <% end %>
     </li>
-    <li <%= class_if_current_page('') %>>
-      <a href="message.html" class="no-text" title="Mes messages">
+    <li <%= class_if(request.original_url.include? '/messages') %>>
+      <%= link_to messages_path, :class => 'no-text', title: 'Mes messages' do %>
         <i class="icon-envelope"></i><!-- <span class="notif">12</span> -->
-      </a>
+      <% end %>
     </li>
     <li>
       <%= link_to destroy_user_session_path, { method: 'delete', :class => 'no-text', title: 'Se déconnecter' } do %>

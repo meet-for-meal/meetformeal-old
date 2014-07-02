@@ -1,0 +1,73 @@
+@import "compass/css3";
+@import "general/base";
+
+/* Messages styles
+-------------------------------------------------------------- */
+
+.author-msg {
+  font-size: 13px;
+  margin:0px;
+
+  a {
+    font-weight: bold;
+  }
+
+}
+
+.content-msg {
+  margin: 5px 0px 15px 50px;
+}
+
+#conversations {
+
+  ul li {
+    cursor: pointer;
+    @include border-radius(3px);
+    padding: 5px 10px;
+    margin-bottom: 5px;
+
+    &.current{
+      background: $color-grey-light-2;
+      border-bottom: 4px solid $color-primary-1;
+      @include border-radius(3px 3px 0px 0px);
+    }
+
+    &:hover{
+      background: $color-grey-light-2;
+    }
+
+    a {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .conversation img {
+      margin-bottom:0;
+    }
+
+    .name-conversation{
+      margin-bottom: 0px;
+    }
+
+  }
+
+  .extract-conversation{
+    margin:0px;
+  }
+
+}
+
+#conversations .message-date, .single-msg .message-date, #notifications .message-date {
+  margin-bottom:1px;
+  color:$color-grey-regular-2;
+  font-size:11px;
+  line-height:11px;
+}
+
+.single-msg {
+  border-bottom: 1px solid $color-grey-light-2;
+  margin-bottom: 15px;
+  &:last-child {
+    border-bottom:none;
+  }
+}

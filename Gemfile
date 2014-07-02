@@ -24,6 +24,7 @@ gem 'cancan'
 gem 'devise'
 gem 'acts_as_friendable', git: 'https://github.com/rhannequin/acts_as_friendable.git'
 gem 'acts-as-taggable-on'
+gem 'mailboxer'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc

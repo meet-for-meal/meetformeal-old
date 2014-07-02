@@ -1,0 +1,28 @@
+<h2>Mes autres conversations</h2>
+<% if @conversations.any? %>
+  <ul>
+    <% @conversations.each do |conversation| %>
+      <% participant = conversation.participants.reject { |p| p == current_user }.first %>
+      <% last_message = conversation.last_message %>
+      <li class="conversation current">
+        <%= image_tag(fake_pp_url(participant), :class => 'avatar', width: 40, height: 40) %>
+        <p class="name-conversation">
+          <%= link_to user_path(participant) do %>
+            <%= participant.name %>
+          <% end %>
+        </p>
+        <p class="message-date"><%= l conversation.updated_at, format: :short %></p>
+        <p class="extract-conversation">
+          <%= last_message.body.truncate(50) %>
+        </p>
+        <p>
+          <%= link_to message_path(conversation), :class => 'btn' do %>
+            Lire la conversation
+          <% end %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Vous n'avez pas encore de message.</p>
+<% end %>

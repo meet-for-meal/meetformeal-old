@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     resources :friendships, only: [:create, :update]
   end
 
+  resources :messages
+
   # Announcements
   resources :announcements, only: [:new, :create, :edit, :update, :destroy] do
     resources :subscriptions, only: :create
