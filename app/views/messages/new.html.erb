@@ -1,0 +1,36 @@
+<%= render partial: 'layouts/header_banner', locals: { title: @title } %>
+
+<div class="wrapper">
+
+  <div class="col-2">
+
+    <%= form_tag messages_path, id: 'conversation-form', method: 'post' do %>
+      <p>
+        <label for="conversation[subject]">
+          <strong><i class="icon-pencil"></i> Sujet</strong>
+        </label>
+        <br>
+        <input type="text" name="conversation[subject]" id="conversation[subject]">
+      </p>
+      <p>
+        <label for="conversation[body]">
+          <strong><i class="icon-pencil"></i> Message</strong>
+        </label>
+        <br>
+        <textarea name="conversation[body]" id="conversation[body]" cols="80" rows="10"></textarea>
+      </p>
+      <p>
+        <input type="submit" class="btn" value="Envoyer">
+        <input type="hidden" name="participant[id]" value="<%= @participant.id %>">
+      </p>
+    <% end %>
+
+  </div>
+
+  <div class="col-1">
+
+    <%= render partial: 'conversation_list' %>
+
+  </div>
+
+</div>

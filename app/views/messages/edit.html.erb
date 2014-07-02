@@ -1,0 +1,29 @@
+<%= render partial: 'layouts/header_banner', locals: { title: @title } %>
+
+<div class="wrapper">
+
+  <div class="col-2">
+
+    <%= form_tag message_path(@conversation), id: 'conversation-form', method: 'put' do %>
+      <p>
+        <label for="conversation[body]">
+          <strong><i class="icon-pencil"></i> Message</strong>
+        </label>
+        <br>
+        <textarea name="conversation[body]" id="conversation[body]" cols="80" rows="10"></textarea>
+      </p>
+      <p>
+        <input type="hidden" name="conversation[id]" value="<%= @conversation.id %>">
+        <input type="submit" class="btn" value="Envoyer">
+      </p>
+    <% end %>
+
+  </div>
+
+  <div class="col-1">
+
+    <%= render partial: 'conversation_list' %>
+
+  </div>
+
+</div>

@@ -1,0 +1,5 @@
+<% unless @is_own_profile %>
+  <%= link_to new_message_path(user_id: @user.id), :class => 'btn' do %>
+    <i class="icon-envelope"></i> Envoyer un message
+  <% end %>
+<% end %>
