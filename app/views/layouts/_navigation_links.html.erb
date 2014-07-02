@@ -1,4 +1,4 @@
-<nav>
+<nav id="main-menu">
   <ul>
     <!-- <li>
       <a href="#" class="no-text toggle-notif" title="Notifications">
@@ -7,28 +7,56 @@
     </li> -->
     <li <%= class_if_current_page(homepage_url) %>>
       <%= link_to homepage_path do %>
-        <i class="icon-home"></i> Accueil
+        <i class="icon-home"></i> <span class="text">Accueil</span>
       <% end %>
     </li>
     <li <%= class_if_current_page(restaurants_url) %>>
       <%= link_to restaurants_path do %>
-        <i class="icon-map-marker"></i>Les restaurants
+        <i class="icon-map-marker"></i> <span class="text">Les restaurants</span>
       <% end %>
     </li>
     <li <%= class_if_current_page(user_url(current_user)) %>>
       <%= link_to user_path(current_user) do %>
-        <i class="icon-user"></i><%= current_user.name %>
+        <i class="icon-user"></i> <span class="text"><%= current_user.name %></span>
       <% end %>
     </li>
     <li <%= class_if(request.original_url.include? '/messages') %>>
       <%= link_to messages_path, :class => 'no-text', title: 'Mes messages' do %>
-        <i class="icon-envelope"></i><!-- <span class="notif">12</span> -->
+        <i class="icon-envelope"></i> <span class="text">Messages</span><!-- <span class="notif">12</span> -->
       <% end %>
     </li>
     <li>
       <%= link_to destroy_user_session_path, { method: 'delete', :class => 'no-text', title: 'Se déconnecter' } do %>
-        <i class="icon-off"></i>
+        <i class="icon-off"></i> <span class="text">Deconnexion</span>
       <% end %>
     </li>
   </ul>
+  <div id="notifications">
+    <!-- <ul>
+      <li>
+        <a href="#">
+          <span class="red">Alexandra Martin</span> a proposé une annonce.<br>
+          <span class="message-date">28/02/2013 à 14h42</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="red">Rémy Hannequin</span> souhaite devenir votre ami.<br>
+          <span class="message-date">28/02/2013 à 14h42</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="red">Pierre Grimaud</span> a proposé une annonce.<br>
+          <span class="message-date">28/02/2013 à 14h42</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <span class="red">Romain Deligny</span> a proposé une annonce.<br>
+          <span class="message-date">28/02/2013 à 14h42</span>
+        </a>
+      </li>
+    </ul> -->
+  </div>
 </nav>

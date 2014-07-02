@@ -75,6 +75,9 @@ header {
         display:block;
         &.no-text {
           position:relative;
+          .text {
+            display:none;
+          }
           [class^="icon-"] {
             margin-right:0px;
           }
@@ -116,6 +119,7 @@ header {
     margin-left: -150px;
     z-index: 100;
     padding: 5px 10px;
+    text-align:left;
     background: $color-grey-light-1;
     border-top: 2px solid $color-primary-1;
     border-left: 1px solid $color-grey-light-4;
@@ -145,6 +149,25 @@ header {
 
   }
 
+  a#toggle-menu {
+    display: none;
+    float: right;
+    text-align: center;
+    background: $color-grey-light-3;
+    padding: 4px;
+    margin-top: 4px;
+    border: 1px solid $color-grey-regular-1;
+    @include border-radius(2px);
+    &:hover {
+      background: $color-grey-light-2;
+    }
+
+    i {
+      margin:0;
+      vertical-align:inherit;
+    }
+  }
+
 }
 
 /* Global layout
@@ -172,22 +195,28 @@ header {
 
 }
 
-.col-1 {
-  width:300px;
+.wrapper {
+  width:960px;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.col-1, .col-2, .col-3 {
   padding:10px;
   float:left;
+  @include box-sizing(border-box);
+}
+
+.col-1 {
+  width:320px;
 }
 
 .col-2 {
-  width:620px;
-  padding:10px;
-  float:left;
+  width:640px;
 }
 
 .col-3 {
-  width:940px;
-  padding:10px;
-  float:left;
+  width:960px;
 }
 
 .centered {
@@ -252,6 +281,8 @@ footer {
   .col-left, .col-middle, .col-right {
     width:33.33%;
     float:left;
+    padding:0px 15px;
+    @include box-sizing(border-box);
   }
 
   h3 {
@@ -296,4 +327,205 @@ footer {
     @include transition(all 0.1s ease-in-out);
     &:hover { background-color: #aaa; }
   }
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: 768px) {
+
+  header {
+    nav {
+      display:none;
+      position: absolute;
+      top: 35px;
+      right: 0;
+      padding: 15px 20px 15px 20px;
+      width: 100%;
+      background: rgba(0,0,0,0.9);
+      text-align: center;
+      box-sizing: border-box;
+      z-index:199;
+
+      > ul > li {
+
+        &:first-child {
+          display:none;
+        }
+
+        display:block;
+        padding:0px;
+
+        [class^="icon-"] {
+          display:none;
+        }
+
+        a {
+          color: $color-grey-light-3;
+          font-size: 16px;
+          &.no-text {
+            .text {
+              display:inline-block;
+            }
+          }
+          .notif {
+            display:none;
+          }
+
+        }
+
+        &.current {
+          border-top:none;
+        }
+      }
+
+      #notifications {
+        display: block;
+        position: static;
+        width: inherit;
+        top: inherit;
+        left: inherit;
+        margin-left: inherit;
+        margin-top: 10px;
+        text-align:center;
+        z-index: inherit;
+        padding: 5px 0px 0px 0px;
+        background: none;
+        border-top: 1px solid $color-grey-regular-2;
+        border-left: inherit;
+        border-right: inherit;
+        border-bottom: inherit;
+
+        ul li {
+          display:block;
+          border-bottom:none;
+          padding: 10px 0 0 0;
+
+          a {
+            color: $color-grey-light-3;
+          }
+        }
+
+      }
+
+    }
+
+    a#toggle-menu {
+      display:block;
+    }
+  }
+
+  .wrapper {
+    width:100% !important;
+    padding: 0 20px;
+    @include box-sizing(border-box);
+  }
+
+  .col-1, .col-2, .col-3 {
+    width:100%;
+    float:none;
+  }
+
+  footer {
+    .col-left, .col-middle, .col-right {
+      width:100%;
+      padding:10px 15px;
+      float:none;
+      @include box-sizing(border-box);
+    }
+  }
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 769px) and (max-width: 991px) {
+
+  header {
+    nav span.text {
+      display:none;
+    }
+  }
+
+  .wrapper {
+    width:726px;
+    padding: 0 20px;
+    @include box-sizing(border-box);
+  }
+
+  .col-1, .col-2, .col-3 {
+    padding:10px;
+  }
+
+  .col-1 {
+    width:240px;
+  }
+
+  .col-2 {
+    width:480px;
+  }
+
+  .col-3 {
+    width:720px;
+  }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  header {
+    #main-menu {
+      display: block !important;
+    }
+  }
+
+  .wrapper {
+    width:960px;
+  }
+
+  .col-1, .col-2, .col-3 {
+    padding:15px;
+  }
+
+  .col-1 {
+    width:320px;
+  }
+
+  .col-2 {
+    width:640px;
+  }
+
+  .col-3 {
+    width:960px;
+  }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+  header {
+    #main-menu {
+      display: block !important;
+    }
+  }
+
+  .wrapper {
+    width:1140px;
+  }
+
+  .col-1, .col-2, .col-3 {
+    padding:20px;
+  }
+
+  .col-1 {
+    width:380px;
+  }
+
+  .col-2 {
+    width:760px;
+  }
+
+  .col-3 {
+    width:1140px;
+  }
+
 }

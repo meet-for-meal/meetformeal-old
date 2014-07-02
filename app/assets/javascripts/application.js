@@ -28,6 +28,13 @@
     , markers: {}
   }
 
+  $('#toggle-menu').click(function(e) {
+    e.stopPropagation()
+    e.preventDefault()
+    $('#main-menu').slideToggle(200)
+    $('#main-menu').toggleClass('active')
+  })
+
   MFM.FoursquareApi = (function() {
     var f = {}
       , foursquareApiUrl = 'https://api.foursquare.com/v2'

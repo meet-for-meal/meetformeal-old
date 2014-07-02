@@ -74,6 +74,30 @@ $(document).ready ->
       timeout: 3000
       pager:  '#nav'
 
+  resizeSlider = ->
+    sliderHeight = $("#featured-restaurants .restaurant").height()
+    $("#featured-restaurants").height sliderHeight
+    return
+
+  resizeend = ->
+    if new Date() - rtime < delta
+      setTimeout resizeend, delta
+    else
+      timeout = false
+      resizeSlider()
+    return
+
+  rtime = new Date(1, 1, 2000, 12, 0, 0)
+  timeout = false
+  delta = 200
+
+  $(window).resize ->
+    rtime = new Date()
+    if timeout is false
+      timeout = true
+      setTimeout resizeend, delta
+    return
+
   getNearAnnouncements = (lat, lng) ->
     req = MFM.apiRequest "/announcements/near?lat=#{lat}&lng=#{lng}"
     req.done (announcements) ->
@@ -99,3 +123,5 @@ $(document).ready ->
 
   initMap()
   initSlider()
+  resizeSlider()
+

@@ -20,8 +20,7 @@
           <%= f.label :description do %>
             <strong><i class="icon-pencil"></i> Description de l'annonce</strong>
           <% end %>
-          <%= f.input :description, label: false %>
-          <!-- <textarea id="announcement_description" cols="30" rows="10" name="announcement_description"></textarea> -->
+          <%= f.text_area :description, label: false, cols: 30, rows: 10 %>
         </p>
         <p>
           <input type="hidden" name="announcement[lat]">

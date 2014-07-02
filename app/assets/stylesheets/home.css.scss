@@ -30,7 +30,7 @@
   #closest-users {
     background: rgba(255,255,255,0.8);
     right: 20px;
-    z-index: 400;
+    z-index: 198;
     bottom: 40px;
     position: absolute;
 
@@ -134,11 +134,12 @@
   }
 
   #featured-restaurants {
+    margin: 30px 0;
 
     .restaurant {
       position:relative;
-      width:620px;
-      height:344px;
+      width:100%;
+      height:auto;
       cursor:pointer;
       &:hover {
         @include opacity(0.9);
@@ -173,8 +174,6 @@
   }
 
   #nav {
-
-    margin-top:10px;
 
     a {
       display: inline-block;
