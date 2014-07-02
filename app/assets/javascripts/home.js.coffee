@@ -9,13 +9,20 @@ Handlebars.registerHelper 'joinHobbies', (hobbies) ->
   hobbies.forEach (hobby, i) -> hobbies[i] = "##{hobby}"
   hobbies.join(', ')
 
-# Temporary
+# Temporary fix OMG sorry
 
 Handlebars.registerHelper 'fakePpUrl', (owner) ->
-  return '/assets/users/remy.jpg' if owner.email == 'm@rhannequin.com'
+  remy = 'http://www.meetformeal.com/assets/users/remy-93b5fa66d78a8b8b75249eb1fac49a91.jpg'
+  return remy if owner.email == 'm@rhannequin.com'
   i = owner.email.split('-')[0]
   g = owner.gender.charAt(0)
-  "/assets/users/#{i}-#{g}.jpg"
+  hash = switch parseInt(i, 10)
+    when 1 then '1af50bdae3eaf9da1e4e27bbba4ee766'
+    when 2 then 'eba7b83375a7648982728d96bffe8892'
+    when 3 then '2312083f96cad5022dffe00a7be7bfc7'
+    when 3 then '4f76733f86d13950ee35f9763dc83c8f'
+    when 5 then 'cffb1493fb992a7442390ac854f7cf9a'
+  "http://www.meetformeal.com/assets/users/#{i}-#{g}-#{hash}.jpg"
 
 class User
   constructor: (@name, @lat, @lng) ->
