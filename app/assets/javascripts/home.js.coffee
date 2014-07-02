@@ -20,7 +20,7 @@ Handlebars.registerHelper 'fakePpUrl', (owner) ->
     when 1 then '1af50bdae3eaf9da1e4e27bbba4ee766'
     when 2 then 'eba7b83375a7648982728d96bffe8892'
     when 3 then '2312083f96cad5022dffe00a7be7bfc7'
-    when 3 then '4f76733f86d13950ee35f9763dc83c8f'
+    when 4 then '4f76733f86d13950ee35f9763dc83c8f'
     when 5 then 'cffb1493fb992a7442390ac854f7cf9a'
   "http://www.meetformeal.com/assets/users/#{i}-#{g}-#{hash}.jpg"
 
