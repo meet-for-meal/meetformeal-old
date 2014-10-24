@@ -2,8 +2,8 @@
 
 ## Requirements
 
-* ruby 2.1.1
-* rails 4.1.0
+* ruby 2.1.3
+* rails 4.1.6
 * gem bundler: `gem install bundler`
 
 
@@ -22,7 +22,7 @@ MeetForMeal needs several services to work, such as Foursquare API, Google Maps 
 
 ## Install
 
-Create `config/application.yml` from [`config/application.example.yml`](https://github.com/meet-for-meal/meetformeal/blob/master/config/application.example.yml). Don't forget to change some data with your own information for the following fields :
+Create `config/application.yml` from [`config/application.example.yml`](https://github.com/meet-for-meal/meetformeal/blob/master/config/application.example.yml): `cp config/application.example.yml config/application.yml`. Don't forget to change some data with your own information for the following fields :
 
 - `ADMIN_EMAIL`
 - `ADMIN_GENDER`
@@ -38,10 +38,7 @@ Remember it is better to change other values like `COOKIE_STORE_KEY`, `DEVISE_SE
 Then run:
 
     bundle install
-    bundle exec rake db:crate
-    bundle exec rake db:migrate
-    bundle exec rake db:schema:load
-    bundle exec rake db:seed
+    bundle exec rake db:setup
 
 
 ## Launch

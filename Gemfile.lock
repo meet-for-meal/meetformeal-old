@@ -319,7 +319,7 @@ DEPENDENCIES
   binding_of_caller
   cancan
   capybara
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   compass-rails
   database_cleaner
   devise
@@ -329,14 +329,14 @@ DEPENDENCIES
   geokit-rails
   guard-rspec
   handlebars_assets
-  jbuilder (~> 2.0)
+  jbuilder
   jquery-rails
   json_spec
   mailboxer
   newrelic_rpm
   pg
   quiet_assets
-  rails (= 4.1.0)
+  rails
   rails_12factor
   rails_admin!
   rails_layout
@@ -344,8 +344,8 @@ DEPENDENCIES
   rb-inotify
   rolify
   rspec-rails
-  sass-rails (~> 4.0.3)
-  sdoc (~> 0.4.0)
+  sass-rails
+  sdoc
   shoulda-matchers
   simple_form
   spring
@@ -353,6 +353,6 @@ DEPENDENCIES
   sqlite3
   therubyracer
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier
   unicorn
   unicorn-rails

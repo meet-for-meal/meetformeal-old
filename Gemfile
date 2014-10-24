@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
-gem 'rails', '4.1.0'
-gem 'sass-rails', '~> 4.0.3'
+gem 'rails'
+gem 'sass-rails'
 gem 'compass-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'handlebars_assets'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 gem 'figaro'
 gem 'simple_form'
 gem 'therubyracer', platform: :ruby
@@ -27,7 +26,7 @@ gem 'acts-as-taggable-on'
 gem 'mailboxer'
 
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
