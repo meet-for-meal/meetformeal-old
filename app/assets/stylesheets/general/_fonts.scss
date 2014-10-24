@@ -1,0 +1,42 @@
+// Droid Sans
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), font-url('DroidSans.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), font-url('DroidSans-Bold.woff') format('woff');
+}
+
+
+// Droid Serif
+
+@font-face {
+  font-family: 'Droid Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Serif'), local('DroidSerif'), url('DroidSerif.woff') format('woff');
+}
+
+
+// Economica
+
+@font-face {
+  font-family: 'Economica';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Economica Bold'), local('Economica-Bold'), url('Economica-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Economica';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Economica Italic'), local('Economica-Italic'), url('Economica-Italic.woff') format('woff');
+}
